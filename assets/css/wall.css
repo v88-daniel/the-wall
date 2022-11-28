@@ -1,0 +1,111 @@
+body{
+    background-color: #fbfbfb;
+    position: relative;
+}
+
+nav{
+    align-items: center;
+    background-color: white;
+    box-shadow: 0px 4px 8px 0px #0000000D;
+    color: #152c61;
+    display: flex;
+    justify-content: space-between;
+    padding: 39px 75px;
+}
+
+h1{
+    font-size: 26px;
+    font-weight: 500;
+}
+
+nav a{
+    color: #2c6bff;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 16px;
+    margin-left: 12px;
+    text-decoration: none;
+}
+
+.msg_container{
+    background-color: white;
+    box-shadow: 0px 4px 8px 0px #0000000D;
+    height: 76vh;
+    margin: 50px 80px;
+    padding: 71px 68px;
+}
+
+.msg_container header{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 127px;
+}
+
+.msg_container header button{
+    background-color: #2c6bff;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 6px 62px;
+}
+
+.num_of_msgs{
+    color: #707070;
+}
+
+.msg_count{
+    color: #2c6bff;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.empty_msg{
+    color: #707070;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.create_msg_modal{
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0px 4px 8px 0px #0000000D;
+    left: calc(50% - 468.5px);
+    padding: 50px;
+    position: absolute;
+    width: 937px;
+    top: 35%;
+}
+
+.create_msg_modal h2{
+    color: #152c61;
+    font-size: 26px;
+    font-weight: 500;
+    margin-bottom: 39px;
+    text-align: center;
+}
+
+.create_msg_modal header button{
+    background: url("../images/icons.png") no-repeat -93px -6px;
+    border: none;
+    display: block;
+    margin-left: auto;
+	width: 18px;
+	height: 18px;
+}
+
+.create_msg_modal textarea{
+    background-color: #f5f8ff;
+    border: 1px solid #dce6ff;
+    border-radius: 6px;
+    color: rgba(21, 44, 97, 0.5);
+    font-size: 16px;
+    font-weight: 300;
+    height: 185px;
+    margin-bottom: 22px;
+    padding: 10px 14px;
+    width: 100%;
+}
