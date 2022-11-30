@@ -4,36 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Register form of the wall assignment">
+    <meta name="description" content="Signup form of the wall assignment">
     <meta name="author" content="Daniel Renzal">
     <link rel="stylesheet" href="../assets/css/global.css">
     <link rel="stylesheet" href="../assets/css/index.css">
+    <script src="../assets/js/sign_up.js"></script>
     <title>The Wall | Sign Up Page</title>
 </head>
 <body id="sign_in_body">
     <div class="form_container">
-        <form>
+        <form class="sign_up_form">
             <h2>The Wall</h2>
             <h1>Register</h1>
-
             <label for="email">Email</label>
-            <input type="email" id="email">
+            <input type="email" class="email_input">
+            <p class="email_err_msg err_msg"></p>
 
             <label for="password">Password</label>
-            <input type="password" id="password">
+            <input type="password" class="password_input">
+            <p class="password_err_msg err_msg"></p>
 
-            <label for="confirm_password">Confirm Password</label>
-            <input type="password" id="confirm_password">
+            <label for="password">Confirm Password</label>
+            <input type="password" class="cpassword_input">
+            <p class="cpassword_err_msg err_msg"></p>
 
-            <p class="disclaimer">
-                By creating an account, you agree with The Wall's <a href="#">Privacy Policy</a> and <a href="#">Terms of Use</a>.
-            </p>
+            <p class="disclaimer">By creating an account, you agree with The Wall's <a href="#">Privacy Policy</a> and <a href="#">Terms of Use</a>.</p>
 
-            <input type="submit" value="Sign Up">
-            <p>Already have an account? <a href="index.html">Sign In</a></p>
+            <input type="submit" value="Sign Up" class="sign_up_btn">
+            <p>Already have an account? <a href="index.html">Sign in</a></p>
         </form>
     </div>
-    <div class="image_container">
+    <div class="img_container">
         <img src="../assets/images/person.svg" alt="A person standing while holding a paper">
     </div>
 </body>

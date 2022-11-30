@@ -8,28 +8,28 @@
     <meta name="author" content="Daniel Renzal">
     <link rel="stylesheet" href="../assets/css/global.css">
     <link rel="stylesheet" href="../assets/css/index.css">
+    <script src="../assets/js/index.js"></script>
     <title>The Wall | Sign In Page</title>
 </head>
 <body id="sign_in_body">
     <div class="form_container">
-        <form>
+        <form class="sign_in_form">
             <h2>The Wall</h2>
             <h1>Log In</h1>
-
             <label for="email">Email</label>
-            <input type="email">
-
+            <input type="email" class="email_input">
+            <p class="email_err_msg err_msg"></p>
             <div class="password_area">
                 <label for="password">Password</label>
                 <a href="#">Forgot Password?</a>
             </div>
-            <input type="password">
-
+            <input type="password" class="last_input_element password_input">
+            <p class="password_err_msg err_msg"></p>
             <input type="submit" value="Sign In">
-            <p>Don't have an account? <a href="sign_up.html">Sign Up</a></p>
+            <p>Don't have an account? <a href="sign_up.html" class="to_sign_up">Sign up</a></p>
         </form>
     </div>
-    <div class="image_container">
+    <div class="img_container">
         <img src="../assets/images/person.svg" alt="A person standing while holding a paper">
     </div>
 </body>
