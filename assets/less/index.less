@@ -1,6 +1,7 @@
+@import "global";
+
 #sign_in_body{
-    display: grid;
-    grid-template-columns: 60% 40%;
+    display: flex;
     height: 100vh;
 
     .form_container{
@@ -8,124 +9,144 @@
         background-color: #fbfbfb;
         display: flex;
         justify-content: center;
+        width: 60%;
+
+        form{
+            background-color: white;
+            border-radius: 6px;
+            box-shadow: 0px 4px 8px 0px #0000000D;
+            padding: 30px 40px 33px; 
+            width: 450px;
+
+            h2{
+                color: @bright_blue;
+                font-size: 22px;
+                font-weight: 600;
+                margin-bottom: 39px;
+            }
+
+            h1{
+                color: @dark_blue;
+                font-size: 40px;
+                font-weight: 600;
+            }
+
+            label{
+                color: @dark_blue;
+                display: inline-block;
+                font-weight: 300;
+                margin: 28px 0 6px 0;
+
+                &.first_label{
+                    margin-top: 18px;
+                }
+            }
+
+            .password_area{
+                align-items: baseline;
+                display: flex;
+                justify-content: space-between;
+                
+
+                a{
+                    color: black;
+                    font-size: 14px;
+                    font-weight: 300;
+                    opacity: .5;
+                }
+            }
+
+            input{
+                background-color: @transparent_blue;
+                border-radius: 4px;
+                border: none;
+                color: @dark_blue;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                padding: 17px 10px;
+                width: 100%;
+
+                &.error_input{
+                    background-color: rgba(225, 85, 76, 0.08);
+                }
+            }
+
+            p.error_msg{
+                color: #e1554c;
+                font-size: 14px;
+                font-weight: 300;
+                margin-top: 5px;
+            }
+
+            p.disclaimer{
+                color: @dark_blue;
+                margin: 33px 0;
+                text-align: center;
+
+                a{
+                    color: @bright_blue
+                }
+            }
+
+            button[type="submit"]{
+                .submit_btn();
+                border-radius: 4px;
+                display: block;
+                font-weight: 600;
+                margin: 39px auto 34px;
+                padding: 15px 45px;
+                text-transform: uppercase;
+
+                &.sign_up_btn{
+                    margin-top: 0;
+                }
+            }
+
+            p.switch_form{
+                color: rgba(0,0,0,.2);
+                text-align: center;
+
+                a{
+                    color: @bright_blue;
+                }
+            }
+        }
     }
-    
+
     .img_container{
         background-color: #86a7f2;
         position: relative;
-    }
-    
-    .img_container img{
-        position: absolute;
-        left: -67px;
-        top: 25%;
-    }
-    
-    form{
-        background-color: white;
-        border-radius: 6px;
-        box-shadow: 0px 4px 8px 0px #0000000D;
-        padding: 31px 39px 33px;
-        width: 450px;
-    
-        h2{
-            color: #2c6bff;
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 39px;
-        }
-        
-        h1{
-            color: #152c61;
-            font-size: 40px;
-            font-weight: 600;
-            margin-bottom: 18px;
-        }
-    }
-    
-    label{
-        color: #152c61;
-        display: inline-block;
-        font-size: 16px;
-        font-weight: 300;
-        margin-top: 27px;
-        margin-bottom: 7px;
-    }
-    
-    .password_area{
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-    
-        a{
-            color: #000;
-            opacity: 0.5;
-            font-size: 14px;
-            text-decoration: none;
-        }
-    }
-    
-    input[type="email"],
-    input[type="password"]{
-        background-color: #2C6BFF14;
-        border: none;
-        border-radius: 4px;
-        color: #152c61;
-        display: block;
-        font-size: 14px;
-        font-weight: 400;
-        padding: 1.2em .7em;
-        width: 100%;
+        width: 40%;
 
-        &.error{
-            background-color: rgba(225, 85, 76, 0.08);
-        }
-    }
-    
-    p.disclaimer{
-        color: #152c61;
-        font-weight: 300;
-        margin: 34px 0 20px;
-    }
-    
-    input[type="submit"]{
-        background-color: #2c6bff;
-        border: none;
-        border-radius: 4px;
-        color: white;
-        display: block;
-        font-size: 16px;
-        font-weight: 600;
-        padding: 16px 44px;
-        margin: 40px auto 34px;
-        text-transform: uppercase;
-        &.sign_up_btn{
-            margin-top: 33px;
-        }
-    }
-    
-    p{
-        color: rgba(0,0,0,0.2);
-        text-align: center;
-    
-        a{
-            color: #2c6bff;
-            font-size: 16px;
-            font-weight: 400;
-            text-decoration: none;
+        img{
+            left: -67px;
+            position: absolute;
+            top: 25%;
         }
     }
 
-    .err_msg{
-        color: #e1554c;
-        display: none;
-        font-size: 14px;
-        font-weight: 300;
-        margin-top: 5px;
-        text-align: left;
+    @media screen and (max-width: 1236px){
+        .form_container{
+            width: 100%;
+        }
+    
+        .img_container{
+            display: none;
+        }
+    }
 
-        &.show{
-            display: block;
+    @media screen and (max-width: 520px){
+        .form_container{
+            background-color: white;
+
+            form{
+                border-radius: 0;
+                box-shadow: none;
+                width: 100%;
+            }
         }
     }
 }
+
+

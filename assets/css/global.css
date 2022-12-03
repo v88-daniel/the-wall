@@ -26,26 +26,53 @@
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLEj6V1s.ttf) format('truetype');
 }
+/* colors */
+/* mixin */
+.submit_btn {
+  background-color: #2c6bff;
+  border-radius: 6px;
+  border: none;
+  color: white;
+  font-size: 16px;
+  padding: 6.5px 66px;
+}
+.cancel_btn {
+  background-color: transparent;
+  border: none;
+  color: #707070;
+  font-size: 16px;
+  font-weight: 400;
+}
+/* reset */
 * {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
 }
+a {
+  text-decoration: none;
+}
+textarea {
+  background-color: #f5f8ff;
+  border-radius: 6px;
+  border: 1px solid #dce6ff;
+  color: #152c61;
+  font-size: 16px;
+  font-weight: 300;
+  padding: 8px 12px;
+  resize: none;
+  width: 100%;
+}
 button {
   cursor: pointer;
 }
-textarea {
-  color: #152c61;
-  font-size: 16px;
-  resize: none;
-}
 .close_modal_btn {
+  height: 18px;
+  width: 18px;
   background: url("../images/icons.png") no-repeat -93px -6px;
   border: none;
-  width: 18px;
-  height: 18px;
   position: absolute;
-  top: 17px;
-  right: 18px;
+  right: 19px;
+  top: 18px;
 }

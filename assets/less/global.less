@@ -1,5 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
+/* colors */
+@bright_blue: #2c6bff;
+@dark_blue: #152c61;
+@transparent_blue: rgba(44, 107, 255, 0.08);
+@textarea_bg: #f5f8ff;
+@textarea_border: 1px solid #dce6ff;
+
+/* mixin */
+.submit_btn{
+    background-color: @bright_blue;
+    border-radius: 6px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    padding: 6.5px 66px;
+}
+
+.cancel_btn{
+    background-color: transparent;
+    border: none;
+    color: #707070;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+/* reset */
 *{
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
@@ -7,22 +33,32 @@
     padding: 0;
 }
 
+a{
+    text-decoration: none;
+}
+
+textarea{
+    background-color: @textarea_bg;
+    border-radius: 6px;
+    border: @textarea_border;
+    color: @dark_blue;
+    font-size: 16px;
+    font-weight: 300;
+    padding: 8px 12px;
+    resize: none;
+    width: 100%;
+}
+
 button{
     cursor: pointer;
 }
 
-textarea{
-    color: #152c61;
-    font-size: 16px;
-    resize: none;
-}
-
 .close_modal_btn{
+	height: 18px;
+	width: 18px;
     background: url("../images/icons.png") no-repeat -93px -6px;
     border: none;
-    width: 18px;
-    height: 18px;
     position: absolute;
-    top: 17px;
-    right: 18px;
+    right: 19px;
+    top: 18px;
 }
