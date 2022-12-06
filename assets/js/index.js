@@ -4,14 +4,13 @@ document.addEventListener("DOMContentLoaded", () => {
         password: "123456"
     }
 
-    const sign_in_form = document.querySelector(".sign_in_form");
-    const email_input = document.querySelector(".sign_in_form .email_input");
-    const password_input = document.querySelector(".sign_in_form .password_input");
+    const email_input = getElement(".sign_in_form .email_input");
+    const password_input = getElement(".sign_in_form .password_input");
 
-    const email_error = document.querySelector(".sign_in_form .error_email");
-    const password_error = document.querySelector(".sign_in_form .error_password");
+    const email_error = getElement(".sign_in_form .error_email");
+    const password_error = getElement(".sign_in_form .error_password");
 
-    sign_in_form.addEventListener("submit", (event) => {
+    getElement(".sign_in_form").addEventListener("submit", (event) => {
         event.preventDefault();
 
         /** validate email */

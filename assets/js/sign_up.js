@@ -1,15 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const sign_up_form = document.querySelector(".sign_up_form");
-    const email_input = document.querySelector(".sign_up_form .email_input");
-    const password_input = document.querySelector(".sign_up_form .password_input");
-    const confirm_password_input = document.querySelector(".sign_up_form .cpassword_input");
+    const email_input = getElement(".sign_up_form .email_input");
+    const password_input = getElement(".sign_up_form .password_input");
+    const confirm_password_input = getElement(".sign_up_form .cpassword_input");
 
-    const email_error = document.querySelector(".sign_up_form .error_email");
-    const password_error = document.querySelector(".sign_up_form .error_password");
-    const confirm_password_error = document.querySelector(".sign_up_form .error_cpassword");
+    const email_error = getElement(".sign_up_form .error_email");
+    const password_error = getElement(".sign_up_form .error_password");
+    const confirm_password_error = getElement(".sign_up_form .error_cpassword");
 
-    sign_up_form.addEventListener("submit", (event) => {
+    getElement(".sign_up_form").addEventListener("submit", (event) => {
         event.preventDefault();
 
         /** validate email */

@@ -11,25 +11,16 @@
 </head>
 <body>
     <nav>
-        <h1>The Wall Assignment</h1>
-        <p class="user">Welcome, Daniel Renzal! <a href="index.html" class="logout">Logout</a></p>
+        <div class="custom_wrapper">
+            <h1>The Wall Assignment</h1>
+            <p class="user">Welcome, Daniel Renzal! <a href="index.html" class="logout">Logout</a></p>
+        </div>
     </nav>
     <div class="messages_area">
         <header>
-            <p class="message_count"><strong></strong> messages arranged by latest posted</p>
+            <p class="message_count"><strong>0</strong> messages arranged by latest posted</p>
             <button type="button" class="create_msg_btn">Create</button>
         </header>
-
-        <!-- modal to create a message -->
-        <form class="create_msg_modal">
-            <button type="button" class="close_modal_btn"></button>
-            <h2>Create a Message</h2>
-            <textarea placeholder="Type your message here."></textarea>
-            <footer class="modal_btns_container">
-                <button type="button" class="cancel_btn">Cancel</button>
-                <button type="submit" class="post_msg_btn disabled">Post message</button>
-            </footer>
-        </form>
 
         <!-- will prompt if there's no message -->
         <div class="no_msg_prompt">
@@ -39,15 +30,15 @@
 
         <div class="messages_container">
             <!-- to be cloned -->
-            <div class="message_block">
+            <div class="message_block original">
                 <!-- for displaying the message -->
-                <div class="display_msg">
-                    <p class="message_body">daniel</p>
+                <div class="display_msg display_body">
+                    <p class="message_body text"></p>
                     <footer class="actions">
                         <div class="buttons">
                             <button type="button" class="comment_btn"><span></span><strong class="comment_count">0</strong>Comment</button>
-                            <button type="button" class="edit_btn"><span></span>Edit</button>
-                            <button type="button" class="delete_btn"><span></span>Delete</button>
+                            <button type="button" class="edit_btn" data-edit="message_block"><span></span>Edit</button>
+                            <button type="button" class="delete_btn" data-delete="message_block"  data-to-delete="Message"><span></span>Delete</button>
                         </div>
                         <div class="message_info">
                             <img src="../assets/images/user_icon.png" alt="User icon">
@@ -60,27 +51,28 @@
                 <form class="edit_msg_form">
                     <textarea></textarea>
                     <footer>
-                        <button type="button" class="cancel_btn">Cancel</button>
-                        <button type="submit" class="edit_msg_btn">Update Message</button>
+                        <button type="button" class="cancel_btn" data-cancel="message_block">Cancel</button>
+                        <button type="submit" class="edit_msg_btn" data-submit-edit="message_block">Update Message</button>
                     </footer>
                 </form>
                 <form class="comment_form">
                     <textarea></textarea>
-                    <button class="post_comment_btn">Post Comment</button>
+                    <button type="submit" class="post_comment_btn disabled">Post Comment</button>
                 </form>
                 <div class="comments"></div>
             </div>
         </div>
         <!-- to be cloned -->
         <div class="comment_block">
-            <div class="display_comment">
-                <p class="comment_body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis possimus nisi placeat maxime impedit ullam autem sint voluptatibus deleniti modi.</p>
+            <div class="display_comment display_body">
+                <p class="comment_body text"></p>
                 <footer class="actions">
                     <div class="buttons">
-                        <button type="button" class="edit_btn"><span></span>Edit</button>
-                        <button type="button" class="delete_btn"><span></span>Delete</button>
+                        <button type="button" class="edit_btn" data-edit="comment_block"><span></span>Edit</button>
+                        <button type="button" class="delete_btn" data-delete="comment_block" data-to-delete="Comment"><span></span>Delete</button>
                     </div>
                     <div class="message_info">
+                        <img src="../assets/images/user_icon.png" alt="User icon">
                         <span class="posted_by">You</span> - 
                         <span class="post_time">Few seconds ago</span>
                     </div>
@@ -90,10 +82,35 @@
             <form class="edit_comment_form">
                 <textarea></textarea>
                 <footer>
-                    <button type="button" class="cancel_btn">Cancel</button>
-                    <button type="submit" class="edit_msg_btn">Update Comment</button>
+                    <button type="button" class="cancel_btn" data-cancel="comment_block">Cancel</button>
+                    <button type="submit" class="edit_msg_btn" data-submit-edit="comment_block">Update Comment</button>
                 </footer>
             </form>
+        </div>
+    </div>
+
+    <!-- modal to create a message -->
+    <div class="modal_backdrop">
+        <form class="create_msg_modal">
+            <button type="button" class="close_modal_btn" data-close="modal_backdrop"></button>
+            <h2>Create a Message</h2>
+            <textarea placeholder="Type your message here."></textarea>
+            <footer class="modal_btns_container">
+                <button type="button" class="cancel_btn" data-close="modal_backdrop">Cancel</button>
+                <button type="submit" class="post_msg_btn disabled">Post message</button>
+            </footer>
+        </form>
+    </div>
+
+    <div class="modal_backdrop">
+        <div class="confirm_delete_modal">
+            <button type="button" class="close_modal_btn" data-close="modal_backdrop"></button>
+            <h2></h2>
+            <p></p>
+            <footer class="modal_btns_container">
+                <button type="button" class="cancel_btn" data-close="modal_backdrop">Cancel</button>
+                <button type="button" class="remove_btn">Yes, Remove it.</button>
+            </footer>
         </div>
     </div>
     

@@ -2,16 +2,22 @@
 
 body{
     background-color: #fbfbfb;
+    position: relative;
 }
 
 nav{
-    align-items: center;
     background-color: white;
     box-shadow: 0px 4px 8px 0px #0000000D;
-    display: flex;
-    justify-content: space-between;
     margin-bottom: 50px;
     padding: 40px 81px 41px;
+
+    .custom_wrapper{
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        margin: 0 auto;
+        max-width: 1281px;
+    }
 
     h1{
         color: @dark_blue;
@@ -34,10 +40,10 @@ nav{
 .messages_area{
     background-color: white;
     height: 75vh;
-    margin-inline: 79px;
+    margin-inline: auto;
+    max-width: 1281px;
     padding: 76px 68px;
     overflow: auto;
-    position: relative;
 
     header{
         align-items: center;
@@ -49,6 +55,7 @@ nav{
             color: #707070;
             font-size: 16px;
             font-weight: 400;
+
             strong{
                 color: @bright_blue;
                 font-weight: 600;
@@ -61,18 +68,28 @@ nav{
     }
 
     .no_msg_prompt{
-        margin-top: 133px;
+
         &.hide{
             display: none;
         }
+
+        color: #707070;
+        margin-top: 133px;
         text-align: center;
+
         img{
             display: block;
-            margin: 0 auto;
+            margin: 0 auto 20px;
         }
     }
 
-    .message_block{
+    .message_block, 
+    .comment_block{
+
+        &.clone{
+            display: block;
+        }
+
         background-color: white;
         border-radius: 6px;
         border: @textarea_border;
@@ -81,10 +98,6 @@ nav{
         margin-bottom: 19px;
         padding: 24px 29px;
 
-        &.clone{
-            display: block;
-        }
-
         .comment_block{
             border-radius: 6px;
             border: @textarea_border;
@@ -92,12 +105,15 @@ nav{
             padding: 22px 28px;
         }
 
-        .edit_msg_form{
-            display: none;
+        .edit_msg_form, 
+        .edit_comment_form{
 
             &.show{
                 display: block;
             }
+
+            display: none;
+            margin-bottom: 30px;
 
             textarea{
                 margin-bottom: 13px;
@@ -108,6 +124,11 @@ nav{
             }
 
             .edit_msg_btn{
+
+                &.disabled{
+                    opacity: .5;
+                }
+
                 .submit_btn();
                 padding-inline: 22px;
                 margin-left: 26px;
@@ -115,21 +136,27 @@ nav{
         }
 
         .comment_form{
+
+            &.show{
+                display: block
+            }
+
             border-radius: 6px;
             border: @textarea_border;
             display: none;
             margin-top: 26px;
             padding: 30px;
 
-            &.show{
-                display: block
-            }
-
             textarea{
                 margin-bottom: 13px
             }
 
             button{
+
+                &.disabled{
+                    opacity: .5;
+                }
+
                 .submit_btn();
                 display: block;
                 margin-left: auto;
@@ -138,41 +165,8 @@ nav{
         }
     }
 
-    .comment_block{
-        display: none;
-        &.clone{
-            display: block;
-        }
+    .display_body{
 
-        .display_comment{
-            &.hide{
-                display: none
-            }
-        }
-
-        .edit_comment_form{
-            display: none;
-            &.show{
-                display: block;
-            }
-
-            textarea{
-                margin-bottom: 13px
-            }
-
-            footer{
-                text-align: end
-            }
-
-            .edit_msg_btn{
-                .submit_btn();
-                margin-left: 24px;
-                padding-inline: 19px;
-            }
-        }
-    }
-
-    .display_msg, .comment_block{
         &.hide{
             display: none
         }
@@ -202,6 +196,7 @@ nav{
                 }
     
                 &.comment_btn{
+
                     &.has_comment{
                         color: @bright_blue;
 
@@ -209,11 +204,13 @@ nav{
                             background: url("../images/icons.png") -3px -36px;
                         }
                     }
+
                     strong{
                         font-size: 16px;
                         font-weight: 400;
                         margin-right: 4px;
                     }
+
                     span{
                         background: url("../images/icons.png") no-repeat -3px -6px;
                         height: 18px;
@@ -223,6 +220,7 @@ nav{
     
                 &.edit_btn{
                     color: @bright_blue;
+
                     span{
                         background: url("../images/icons.png") no-repeat -31px -4px;
                         height: 22px;
@@ -243,6 +241,7 @@ nav{
             .message_info{
                 align-items: center;
                 display: flex;
+
                 img{
                     margin-bottom: 2px;
                     margin-right: 7px;
@@ -261,50 +260,101 @@ nav{
             }
         }
     }
+}
 
-    .create_msg_modal{
-        background-color: white;
-        border-radius: 6px;
-        box-shadow: 0px 4px 8px 0px #0000000D;
-        display: none;
-        left: calc(~"50% - 468.25px");
-        padding: 43px 53px;
-        position: absolute;
-        width: 937px;
+.modal_backdrop{
 
-        h2{
-            color: @dark_blue;
-            font-size: 26;
-            font-weight: 500;
-            margin-bottom: 44px;
-            text-align: center;
+    &.show{
+        display: block;
+    }
+
+    display: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 100vh;
+}
+ 
+.create_msg_modal{
+    .modal();
+    padding: 43px 53px;
+    width: 937px;
+
+    h2{
+        color: @dark_blue;
+        font-size: 26px;
+        font-weight: 500;
+        margin-bottom: 44px;
+        text-align: center;
+    }
+
+    textarea{
+        height: 194px;
+        margin-bottom: 23px;
+        width: 100%;
+    }
+
+    .modal_btns_container{
+        text-align: end;
+        
+        .post_msg_btn{
+
+            &.disabled{
+                opacity: .5;
+            }
+
+            .submit_btn();
+            border-radius: 6px;
+            margin-left: 20px;
+            padding: 7px 40px;
         }
+    }
 
-        &.show{
-            display: block;
-        }
+}
 
-        textarea{
-            height: 194px;
-            margin-bottom: 23px;
+.confirm_delete_modal{
+    .modal();
+    padding: 46px 74px 60px;
+    width: 540px;
+
+    h2{
+        color: @dark_blue;
+        font-size: 26px;
+        font-weight: 500;
+        margin-bottom: 33px;
+        text-align: center;
+    }
+
+    p{
+        color: @dark_blue;
+        font-size: 16px;
+        font-weight: 400;
+        margin-bottom: 33px;
+        text-align: center;
+    }
+
+    .modal_btns_container{
+        align-items: center;
+        display: flex;
+
+        button{
             width: 100%;
         }
 
-        .modal_btns_container{
-            text-align: end;
-            
-            .post_msg_btn{
-                .submit_btn();
-                border-radius: 6px;
-                margin-left: 20px;
-                padding: 7px 40px;
-
-                &.disabled{
-                    opacity: .5;
-                }
-            }
+        .cancel_btn{
+            .cancel_btn();
+            color: #707070;
+            padding-right: 21px
         }
-
+        
+        .remove_btn{
+            .submit_btn();
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 10px 31px;
+        }
     }
 }
 
@@ -323,10 +373,6 @@ nav{
         padding: 1.5em 1.8em;
 
         header{
-            // flex-direction: column;
-            // align-items: start;
-            // gap: 1em;
-
             .create_msg_btn{
                 padding-inline: 13px;
             }
@@ -337,8 +383,8 @@ nav{
                 .actions{
                     display: grid;
                     grid-template-areas: 
-                    "post_info"
-                    "buttons";
+                        "post_info"
+                        "buttons";
                     margin-top: .7em;
 
                     .buttons{
@@ -358,8 +404,8 @@ nav{
             .actions{
                 display: grid;
                 grid-template-areas: 
-                "post_info"
-                "buttons";
+                    "post_info"
+                    "buttons";
                 margin-top: .7em;
 
                 .buttons{
@@ -374,13 +420,10 @@ nav{
             }
         }
 
-        .create_msg_modal{
-            width: 100%;
-            border-radius: 0;
-            left: 0;
-            right: 0;
-        }
     }
 
-    
+    .create_msg_modal{
+        width: 100%;
+        border-radius: 0;
+    }
 }
