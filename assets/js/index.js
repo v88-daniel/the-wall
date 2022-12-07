@@ -36,7 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         if(email_input.value === user.email && password_input.value === user.password){
-            console.log("sdf")
             location.href = "wall.html"
         }
     });

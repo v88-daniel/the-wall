@@ -2,14 +2,17 @@
 
 body{
     background-color: #fbfbfb;
-    position: relative;
+
+    &.modal_open{
+        overflow: hidden;
+    }
 }
 
 nav{
     background-color: white;
     box-shadow: 0px 4px 8px 0px #0000000D;
     margin-bottom: 50px;
-    padding: 40px 81px 41px;
+    padding-inline: 1.5em;
 
     .custom_wrapper{
         align-items: center;
@@ -17,6 +20,7 @@ nav{
         justify-content: space-between;
         margin: 0 auto;
         max-width: 1281px;
+        padding: 40px 0 41px;
     }
 
     h1{
@@ -38,12 +42,15 @@ nav{
 }
 
 .messages_area{
-    background-color: white;
-    height: 75vh;
-    margin-inline: auto;
-    max-width: 1281px;
-    padding: 76px 68px;
-    overflow: auto;
+    padding-inline: 1.5em;
+
+    .custom_wrapper{
+        background-color: white;
+        margin-inline: auto;
+        max-width: 1281px;
+        min-height: 75vh;
+        padding: 76px 68px;
+    }
 
     header{
         align-items: center;
@@ -64,18 +71,18 @@ nav{
 
         .create_msg_btn{
             .submit_btn();
+            padding: 6.5px 34px;
         }
     }
 
     .no_msg_prompt{
+        color: #707070;
+        margin-top: 133px;
+        text-align: center;
 
         &.hide{
             display: none;
         }
-
-        color: #707070;
-        margin-top: 133px;
-        text-align: center;
 
         img{
             display: block;
@@ -85,11 +92,6 @@ nav{
 
     .message_block, 
     .comment_block{
-
-        &.clone{
-            display: block;
-        }
-
         background-color: white;
         border-radius: 6px;
         border: @textarea_border;
@@ -98,22 +100,18 @@ nav{
         margin-bottom: 19px;
         padding: 24px 29px;
 
-        .comment_block{
-            border-radius: 6px;
-            border: @textarea_border;
-            margin-top: 18px;
-            padding: 22px 28px;
+        &.clone{
+            display: block;
         }
 
         .edit_msg_form, 
         .edit_comment_form{
+            display: none;
+            margin-bottom: 30px;
 
             &.show{
                 display: block;
             }
-
-            display: none;
-            margin-bottom: 30px;
 
             textarea{
                 margin-bottom: 13px;
@@ -130,39 +128,43 @@ nav{
                 }
 
                 .submit_btn();
-                padding-inline: 22px;
                 margin-left: 26px;
+                padding-inline: 22px;
             }
         }
+    }
 
-        .comment_form{
+    .comment_form{
+        border-radius: 6px;
+        border: @textarea_border;
+        display: none;
+        margin-top: 26px;
+        padding: 30px;
 
-            &.show{
-                display: block
-            }
-
-            border-radius: 6px;
-            border: @textarea_border;
-            display: none;
-            margin-top: 26px;
-            padding: 30px;
-
-            textarea{
-                margin-bottom: 13px
-            }
-
-            button{
-
-                &.disabled{
-                    opacity: .5;
-                }
-
-                .submit_btn();
-                display: block;
-                margin-left: auto;
-                padding-inline: 31px;
-            }
+        &.show{
+            display: block
         }
+
+        textarea{
+            margin-bottom: 13px
+        }
+
+        button{
+
+            &.disabled{
+                opacity: .5;
+            }
+
+            .submit_btn();
+            display: block;
+            margin-left: auto;
+            padding-inline: 31px;
+        }
+    }
+
+    .comment_block{
+        margin-top: 18px;
+        padding: 22px 28px;
     }
 
     .display_body{
@@ -263,17 +265,20 @@ nav{
 }
 
 .modal_backdrop{
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    padding-inline: 1.5em;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
 
     &.show{
-        display: block;
+        display: flex;
     }
 
-    display: none;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    height: 100vh;
 }
  
 .create_msg_modal{
@@ -313,7 +318,8 @@ nav{
 
 }
 
-.confirm_delete_modal{
+.confirm_delete_message_modal,
+.confirm_delete_comment_modal{
     .modal();
     padding: 46px 74px 60px;
     width: 540px;
@@ -360,7 +366,11 @@ nav{
 
 @media screen and (max-width: 986px){
     nav{
-        padding: 1.2em 1.8em;
+        padding: 1.2em 1.5em;
+
+        .custom_wrapper{
+            padding: 0;
+        }
 
         p.user{
             display: flex;
@@ -370,7 +380,9 @@ nav{
     }
 
     .messages_area{
-        padding: 1.5em 1.8em;
+        .custom_wrapper{
+            padding: 1.5em 1.8em;
+        }
 
         header{
             .create_msg_btn{
@@ -378,29 +390,9 @@ nav{
             }
         }
 
-        .message_block{
-            .display_msg{
-                .actions{
-                    display: grid;
-                    grid-template-areas: 
-                        "post_info"
-                        "buttons";
-                    margin-top: .7em;
-
-                    .buttons{
-                        grid-area: buttons;
-                    }
-
-                    .message_info{
-                        grid-area: post_info;
-                        margin-left: -.3em;
-                        margin-bottom: .3em;
-                    }
-                }
-            }
-        }
-
+        .message_block,
         .comment_block{
+            padding: 1em 1.2em;
             .actions{
                 display: grid;
                 grid-template-areas: 
@@ -418,12 +410,117 @@ nav{
                     margin-bottom: .3em;
                 }
             }
+
+            .edit_msg_form,
+            .edit_comment_form{
+                margin-bottom: 0;
+
+                .edit_msg_btn{
+                    padding: 8px 13px;
+                }
+            }
+        }
+
+        .comment_form{
+            padding: 1em 1.2em;
+            button{
+                padding-inline: 13px;
+            }
+        }
+
+        .comment_block{
+            padding: 1em;
         }
 
     }
 
     .create_msg_modal{
+        padding: 1.7em;
         width: 100%;
-        border-radius: 0;
+
+        h2{
+            margin-bottom: 1em;
+        }
+
+        .modal_btns_container .post_msg_btn{
+            padding-inline: 13px;
+        }
+    }
+
+    .confirm_delete_message_modal,
+    .confirm_delete_comment_modal{
+        padding: 1.7em;
+
+        h2{
+            margin-bottom: .5em;
+        }
+
+        .modal_btns_container{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            place-items: center;
+
+            button{
+                padding: 8px 13px;
+                width: fit-content;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 677px){
+    nav{
+        padding: 1.2em 1.5em;
+
+        .custom_wrapper{
+           align-items: start;
+           flex-direction: column;
+        }
+
+        p.user{
+            align-items: end;
+            display: flex;
+            flex-direction: column;
+
+            a{
+                position: absolute;
+                right: 24px;
+                top: 25px;
+            }
+        }
+    }
+
+    .messages_area{
+        header{
+            align-items: start;
+            flex-direction: column;
+            gap: 1em;
+        }
+    }
+
+    .confirm_delete_message_modal,
+    .confirm_delete_comment_modal{
+
+        .modal_btns_container{
+            display: grid;
+            grid-template-columns: unset;
+            grid-template-areas: 
+                "remove_btn"
+                "cancel_btn";
+            place-items: center;
+
+            button{
+                padding: 8px 13px;
+                width: fit-content;
+
+                &.cancel_btn{
+                    grid-area: cancel_btn;
+                }
+
+                &.remove_btn{
+                    grid-area: remove_btn;
+                }
+            }
+        }
     }
 }

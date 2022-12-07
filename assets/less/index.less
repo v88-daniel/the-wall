@@ -32,15 +32,14 @@
             }
 
             label{
-                
-                &.first_label{
-                    margin-top: 18px;
-                }
-
                 color: @dark_blue;
                 display: inline-block;
                 font-weight: 300;
                 margin: 28px 0 6px 0;
+                
+                &.first_label{
+                    margin-top: 18px;
+                }
 
             }
 
@@ -58,11 +57,6 @@
             }
 
             input{
-
-                &.error_input{
-                    background-color: rgba(225, 85, 76, 0.08);
-                }
-
                 background-color: @transparent_blue;
                 border-radius: 4px;
                 border: none;
@@ -72,6 +66,10 @@
                 font-weight: 400;
                 padding: 17px 10px;
                 width: 100%;
+
+                &.error_input{
+                    background-color: rgba(225, 85, 76, 0.08);
+                }
             }
 
             p.error_msg{
@@ -92,11 +90,6 @@
             }
 
             button[type="submit"]{
-
-                &.sign_up_btn{
-                    margin-top: 0;
-                }
-
                 .submit_btn();
                 border-radius: 4px;
                 display: block;
@@ -104,6 +97,10 @@
                 margin: 39px auto 34px;
                 padding: 15px 45px;
                 text-transform: uppercase;
+
+                &.sign_up_btn{
+                    margin-top: 0;
+                }
             }
 
             p.switch_form{
