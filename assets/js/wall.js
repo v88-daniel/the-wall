@@ -4,63 +4,37 @@ const confirm_delete_message_modal = getElement(".confirm_delete_message_modal")
 const confirm_delete_comment_modal = getElement(".confirm_delete_comment_modal");
 const create_msg_input = getElement(".create_msg_modal textarea");
 const post_msg_btn = getElement(".post_msg_btn");
-const no_msg_prompt = getElement(".no_msg_prompt")
+const no_msg_prompt = getElement(".no_msg_prompt");
 const msg_count = getElement(".message_count strong");
 /* message/comment that needs to be deleted will be placed here.
  * will use this variable to target the element.*/
 let message_to_delete = null;
 
 /** open the modal to create a new message */
-getElement(".create_msg_btn").addEventListener("click", () => {
-    create_msg_modal.closest(".modal_backdrop").classList.toggle("show");
-    body.classList.add("modal_open");
-});
+getElement(".create_msg_btn").addEventListener("click", openCreateMessageModal);
+
+/** close modal */
+getElements(".close_modal").forEach(button => button.addEventListener("click", closeCreateMessageModal))
 
 /** type message */
 create_msg_input.addEventListener("keyup", () => validateTyping(create_msg_input, post_msg_btn));
 
 /** post message */
-create_msg_modal.addEventListener("submit", event => {
-    event.preventDefault();
-
-    if(create_msg_input.value){
-        const new_message = postMessage(create_msg_input, msg_count, no_msg_prompt);
-        post_msg_btn.classList.add("disabled");
-
-        /** adding event listener to its edit form */
-        const edit_msg_form = new_message.querySelector(".edit_form");
-        addEventListenerForEdit(edit_msg_form);
-
-        /** adding event listener to its add comment form */
-        new_message.querySelector(".comment_form").addEventListener("submit", function(event){
-            event.preventDefault();
-            const submit_comment_btn = this.querySelector(".post_comment_btn");
-            const new_comment = submitComment(submit_comment_btn);
-
-            /** adding event listener to its edit form */
-            const edit_comment_form = new_comment.querySelector(".edit_form");
-            addEventListenerForEdit(edit_comment_form);
-        })
-    }
-});
+create_msg_modal.addEventListener("submit", postNewmessage);
 
 /** adding event listener to confirm delete forms */
 confirm_delete_message_modal.addEventListener("submit", deleteMessage);
 confirm_delete_comment_modal.addEventListener("submit", deleteComment);
 
+
+
 /** add click event to the messages area */
 document.addEventListener("click", event => {
     const clicked_element = event.target;
 
-    /** close create_msg_form modal */
-    if(clicked_element.hasAttribute("data-close")){
-        clicked_element.closest("."+clicked_element.getAttribute("data-close")).classList.remove("show");
-        body.classList.remove("modal_open");
-    }
-
     /** if edit_btn is clicked (whether on comment or message) */
     if(clicked_element.matches(".edit_btn")){
-        toggleEditForm(clicked_element)
+        // toggleEditForm(clicked_element)
     }
 
     /** cancel edit */
@@ -84,6 +58,46 @@ document.addEventListener("click", event => {
     }
 });
 
+/** function to open create message modal */
+function openCreateMessageModal(){
+    create_msg_modal.closest(".modal_backdrop").classList.toggle("show");
+    body.classList.add("modal_open");
+}
+
+/** function to close create message modal */
+function closeCreateMessageModal(){
+    this.closest(".modal_backdrop").classList.remove("show");
+    body.classList.remove("modal_open");
+    create_msg_input.value = "";
+}
+
+/** function to post a message */
+function postNewmessage(event){
+    event.preventDefault();
+
+    if(create_msg_input.value){
+        const new_message = postMessage(create_msg_input, msg_count, no_msg_prompt);
+        post_msg_btn.classList.add("disabled");
+
+        /** open edit form */
+        getElement(".edit_msg_form edit_msg_btn")
+
+        /** adding event listener to its edit form */
+        const edit_msg_form = new_message.querySelector(".edit_form");
+        addEventListenerForEdit(edit_msg_form);
+
+        /** adding event listener to its add comment form */
+        new_message.querySelector(".comment_form").addEventListener("submit", function(event){
+            event.preventDefault();
+            const submit_comment_btn = this.querySelector(".post_comment_btn");
+            const new_comment = submitComment(submit_comment_btn);
+
+            /** adding event listener to its edit form */
+            const edit_comment_form = new_comment.querySelector(".edit_form");
+            addEventListenerForEdit(edit_comment_form);
+        })
+    }
+}
 
 /** function to create a message */
 function createMessage(message, msg_block_class, msg_container){
@@ -214,3 +228,12 @@ function deleteComment(event){
     message_to_delete.remove();
     updateCommentCount(parent_message_block);
 }
+
+/** variable name
+ *  create message textarea
+ *  function
+ * use ul li
+ * use id
+ * 3pm monday: deadline
+ * favicon
+ */

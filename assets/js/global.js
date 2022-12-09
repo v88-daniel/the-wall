@@ -3,6 +3,11 @@ function getElement(selector){
     return document.querySelector(selector);
 }
 
+/** function to query multiple elements */
+function getElements(selector){
+    return document.querySelectorAll(selector);
+}
+
 /** function to validate empty inputs */
 function emptyInputValidator(element, error_element, error_msg){
     error_element.textContent = error_msg;
