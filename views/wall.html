@@ -39,7 +39,7 @@
                             <div class="buttons">
                                 <button type="button" class="comment_button"><span></span><strong class="comment_count">0</strong>Comment</button>
                                 <button type="button" class="toggle_edit_button" data-edit=".message_block"><span></span>Edit</button>
-                                <button type="button" class="delete_button" data-delete=".message_block" data-modal-selector=".confirm_delete_message_modal"><span></span>Delete</button>
+                                <button type="button" class="delete_button" data-to-delete=".message_block" data-modal=".delete_message_modal"><span></span>Delete</button>
                             </div>
                             <div class="post_info">
                                 <img src="../assets/images/user_icon.png" alt="User icon">
@@ -49,11 +49,11 @@
                         </footer>
                     </div>
                     <!-- for displaying the edit message form -->
-                    <form class="edit_form">
+                    <form class="edit_form" data-to-edit=".message_block">
                         <textarea name="edit_message_input"></textarea>
                         <footer>
-                            <button type="button" class="cancel_button" data-cancel="message_block">Cancel</button>
-                            <button type="submit" class="edit_button" data-submit-edit=".message_block">Update Message</button>
+                            <button type="button" class="cancel_button" data-cancel=".message_block">Cancel</button>
+                            <button type="submit" class="edit_button">Update Message</button>
                         </footer>
                     </form>
                     <form class="comment_form">
@@ -70,7 +70,7 @@
                     <footer class="actions">
                         <div class="buttons">
                             <button type="button" class="toggle_edit_button" data-edit=".comment_block"><span></span>Edit</button>
-                            <button type="button" class="delete_button" data-delete=".comment_block" data-modal-selector=".confirm_delete_comment_modal"><span></span>Delete</button>
+                            <button type="button" class="delete_button" data-delete=".comment_block" data-modal=".confirm_delete_comment_modal"><span></span>Delete</button>
                         </div>
                         <div class="post_info">
                             <img src="../assets/images/user_icon.png" alt="User icon">
@@ -106,12 +106,12 @@
 
     <!-- modal to delete message -->
     <div class="modal_backdrop">
-        <form class="confirm_delete_message_modal">
-            <button type="button" class="close_modal_button"></button>
+        <form class="delete_message_modal">
+            <button type="button" class="close_modal_button close_modal"></button>
             <h2>Confirm Delete Message</h2>
             <p>Are you sure you want to remove this message? This action cannot be undone.</p>
             <footer>
-                <button type="button" class="cancel_button">Cancel</button>
+                <button type="button" class="cancel_button close_modal">Cancel</button>
                 <button type="submit" class="remove_button">Yes, Remove it.</button>
             </footer>
         </form>
@@ -120,11 +120,11 @@
     <!-- modal to delete comment -->
     <div class="modal_backdrop">
         <form id="confirm_delete_comment_modal">
-            <button type="button" class="close_modal_button"></button>
+            <button type="button" class="close_modal_button close_modal"></button>
             <h2>Confirm Delete Comment</h2>
             <p>Are you sure you want to remove this comment? This action cannot be undone.</p>
             <footer class="modal_buttons_container">
-                <button type="button" class="cancel_button">Cancel</button>
+                <button type="button" class="cancel_button close_modal">Cancel</button>
                 <button type="submit" class="remove_button">Yes, Remove it.</button>
             </footer>
         </form>

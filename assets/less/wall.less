@@ -120,15 +120,23 @@ nav{
                 text-align: end
             }
 
-            .toggle_edit_button{
+            .edit_button{
+                .submit_button();
+                margin-left: 26px;
+                padding-inline: 22px;
 
                 &.disabled{
                     opacity: .5;
                 }
 
-                .submit_button();
-                margin-left: 26px;
-                padding-inline: 22px;
+            }
+        }  
+
+        .comments_container{
+            display: none;
+
+            &.show{
+                display: block;
             }
         }
     }
@@ -239,7 +247,7 @@ nav{
                 }
             }
 
-            .message_info{
+            .post_info{
                 align-items: center;
                 display: flex;
 
@@ -317,7 +325,7 @@ nav{
 
 }
 
-.confirm_delete_message_modal,
+.delete_message_modal,
 .confirm_delete_comment_modal{
     .modal();
     padding: 46px 74px 60px;
@@ -339,7 +347,7 @@ nav{
         text-align: center;
     }
 
-    .modal_btns_container{
+    footer{
         align-items: center;
         display: flex;
 
@@ -349,11 +357,11 @@ nav{
 
         .cancel_button{
             .cancel_button();
-            color: #707070;
+            color: #707070; 
             padding-right: 21px
         }
         
-        .remove_btn{
+        .remove_button{
             .submit_button();
             border-radius: 6px;
             font-size: 18px;
@@ -403,7 +411,7 @@ nav{
                     grid-area: buttons;
                 }
 
-                .message_info{
+                .post_info{
                     grid-area: post_info;
                     margin-left: -.3em;
                     margin-bottom: .3em;
@@ -446,7 +454,7 @@ nav{
         }
     }
 
-    .confirm_delete_message_modal,
+    .delete_message_modal,
     .confirm_delete_comment_modal{
         padding: 1.7em;
 
@@ -497,7 +505,7 @@ nav{
         }
     }
 
-    .confirm_delete_message_modal,
+    .delete_message_modal,
     .confirm_delete_comment_modal{
 
         .modal_btns_container{

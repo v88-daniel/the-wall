@@ -1,6 +1,6 @@
 const body = getElement("body");
 const create_message_modal = getElement("#create_message_modal");
-const confirm_delete_message_modal = getElement(".confirm_delete_message_modal");
+const delete_message_modal = getElement(".delete_message_modal");
 const confirm_delete_comment_modal = getElement(".confirm_delete_comment_modal");
 const create_message_input = getElement("#create_message_modal textarea");
 const post_message_button = getElement("#post_message_button");
@@ -23,40 +23,9 @@ create_message_input.addEventListener("keyup", () => validateTyping(create_messa
 create_message_modal.addEventListener("submit", postNewmessage);
 
 /** adding event listener to confirm delete forms */
-confirm_delete_message_modal.addEventListener("submit", deleteMessage);
+delete_message_modal.addEventListener("submit", deleteMessage);
 confirm_delete_comment_modal.addEventListener("submit", deleteComment);
 
-
-
-/** add click event to the messages area */
-document.addEventListener("click", event => {
-    const clicked_element = event.target;
-
-    /** if toggle_edit_button is clicked (whether on comment or message) */
-    if(clicked_element.matches(".toggle_edit_button")){
-        // toggleEditForm(clicked_element)
-    }
-
-    /** cancel edit */
-    if(clicked_element.hasAttribute("data-cancel")){
-        const msg_block = clicked_element.closest("."+clicked_element.getAttribute("data-cancel"));
-        msg_block.querySelector(".edit_form").classList.toggle("show");
-        msg_block.querySelector(".display_body").classList.toggle("hide");
-    }
-
-    /** toggle add comment form */
-    if(clicked_element.matches(".comment_button")){
-        clicked_element.closest(".message_block").querySelector(".comment_form").classList.toggle("show");
-    }
-
-    /** if delete btn is clicked */
-    if(clicked_element.matches(".delete_button")){
-        message_to_delete = clicked_element.closest(clicked_element.getAttribute("data-delete"));
-        const confirm_modal = clicked_element.getAttribute("data-modal-selector");
-        getElement(confirm_modal).closest(".modal_backdrop").classList.toggle("show");
-        body.classList.add("modal_open");
-    }
-});
 
 /** function to open create message modal */
 function openCreateMessageModal(){
@@ -76,26 +45,27 @@ function postNewmessage(event){
     event.preventDefault();
 
     if(create_message_input.value){
-        const new_message = postMessage(create_message_input, message_count, no_message_prompt);
         post_message_button.classList.add("disabled");
+        const new_message = postMessage(create_message_input, message_count, no_message_prompt);
+        const edit_form = new_message.querySelector(".edit_form");
 
         /** open edit form */
-        getElement(".edit_message_form toggle_edit_button")
+        new_message.querySelector(".toggle_edit_button").addEventListener("click", openEditForm);
 
-        /** adding event listener to its edit form */
-        const edit_message_form = new_message.querySelector(".edit_form");
-        addEventListenerForEdit(edit_message_form);
+        /**submit edit */
+        edit_form.addEventListener("submit", submitEdit)
+        
+        /** close edit form */
+        edit_form.querySelector(".cancel_button").addEventListener("click", closeEditForm);
 
-        /** adding event listener to its add comment form */
-        new_message.querySelector(".comment_form").addEventListener("submit", function(event){
-            event.preventDefault();
-            const submit_comment_button = this.querySelector(".post_comment_button");
-            const new_comment = submitComment(submit_comment_button);
+        /** delete message */
+        new_message.querySelector(".delete_button").addEventListener("click", openDeleteConfirmationModal)
 
-            /** adding event listener to its edit form */
-            const edit_comment_form = new_comment.querySelector(".edit_form");
-            addEventListenerForEdit(edit_comment_form);
-        })
+        /** toggle comment form */
+        new_message.querySelector(".comment_button").addEventListener("click", toggleCommentForm);
+
+        /** add comment */
+        new_message.querySelector(".post_comment_button").addEventListener("click", submitComment)
     }
 }
 
@@ -143,38 +113,61 @@ function updateMessageCount(message_count, no_message_prompt){
 }
 
 /** function to open edit form */
-function toggleEditForm(clicked_element){
-    const msg_block = clicked_element.closest(clicked_element.getAttribute("data-edit"));
-    const current_msg = msg_block.querySelector(".text").textContent;
-    msg_block.querySelector("form textarea").value = current_msg;
-    msg_block.querySelector("form").classList.toggle("show");
-    msg_block.querySelector(".display_body").classList.toggle("hide");
+function openEditForm(){
+    const text_block = this.closest(this.getAttribute("data-edit"));
+    const current_text = text_block.querySelector(".text").textContent;
+    text_block.querySelector("form textarea").value = current_text;
+    text_block.querySelector("form").classList.toggle("show");
+    text_block.querySelector(".display_body").classList.toggle("hide");
+}
+
+/** function to close edit form */
+function closeEditForm(){
+    this.closest("form").classList.toggle("show");
+    this.closest(this.getAttribute("data-cancel")).querySelector(".display_body").classList.toggle("hide");
 }
 
 /** function to submit edits */
-function submitEdit(toggle_edit_button){
-    const msg_block = toggle_edit_button.closest(toggle_edit_button.getAttribute("data-submit-edit"));
-    const updated_text = msg_block.querySelector("form textarea").value;
+function submitEdit(event){
+    event.preventDefault();
+    const text_block = this.closest(this.getAttribute("data-to-edit"));
+    const updated_text = text_block.querySelector("form textarea").value;
     if(updated_text){
-        msg_block.querySelector(".text").textContent = updated_text;
-        msg_block.querySelector("form").classList.toggle("show");
-        msg_block.querySelector(".display_body").classList.toggle("hide");
+        text_block.querySelector(".text").textContent = updated_text;
+        text_block.querySelector("form").classList.toggle("show");
+        text_block.querySelector(".display_body").classList.toggle("hide");
     }
 }
 
+/** function to open delete confirmation modal */
+function openDeleteConfirmationModal(){
+    const modal = getElement(this.getAttribute("data-modal"))
+    message_to_delete = this.closest(this.getAttribute("data-to-delete"));
+    modal.closest(".modal_backdrop").classList.add("show");
+    body.classList.add("modal_open");
+}
+
+/** function to toggle comment form */
+function toggleCommentForm(){
+    const message_block = this.closest(".message_block");
+    message_block.querySelector(".comment_form").classList.toggle("show");
+    message_block.querySelector(".comments_container").classList.toggle("show");
+}
+
 /** function to submit comment */
-function submitComment(submit_comment_button){
-    const parent_msg_block = submit_comment_button.closest(".message_block");
-    const comment_form = submit_comment_button.closest(".comment_form");
+function submitComment(event){
+    event.preventDefault();
+    const message_block = this.closest(".message_block");
+    const comment_form = this.closest(".comment_form");
     const comment_textarea = comment_form.querySelector("textarea");
     if(comment_textarea.value){
-        const comment_container = parent_msg_block.querySelector(".comments");
-        const new_comment = createMessage(comment_textarea.value, ".comment_block", comment_container);
+        const comments_container = message_block.querySelector(".comments_container");
+        const new_comment = createMessage(comment_textarea.value, ".comment_block", comments_container);
         comment_textarea.value = "";
 
         /** update comment count */
-        updateCommentCount(parent_msg_block);
-        submit_comment_button.classList.add("disabled");
+        updateCommentCount(message_block);
+        this.classList.add("disabled");
 
         return new_comment;
     }
@@ -203,19 +196,11 @@ function validateTyping(textarea, submit_button){
     }
 }
 
-/** function to add edit functionality to edit forms */
-function addEventListenerForEdit(edit_form){
-    edit_form.addEventListener("submit", function(event){
-        event.preventDefault();
-        const toggle_edit_button = this.querySelector(".toggle_edit_button");
-        submitEdit(toggle_edit_button);
-    });
-}
 
 /** function to delete message once confirmed */
 function deleteMessage(event){
     event.preventDefault();
-    confirm_delete_message_modal.closest(".modal_backdrop").classList.toggle("show");
+    delete_message_modal.closest(".modal_backdrop").classList.toggle("show");
     message_to_delete.remove();
     updateMessageCount(message_count, no_message_prompt)
 }
