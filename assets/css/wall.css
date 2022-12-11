@@ -51,7 +51,7 @@ textarea {
 button {
   cursor: pointer;
 }
-.close_modal_btn {
+.close_modal_button {
   height: 18px;
   width: 18px;
   background: url("../images/icons.png") no-repeat -93px -6px;
@@ -61,7 +61,7 @@ button {
   top: 18px;
 }
 /* mixin */
-.submit_btn {
+.submit_button {
   background-color: #2c6bff;
   border-radius: 6px;
   border: none;
@@ -69,7 +69,7 @@ button {
   font-size: 16px;
   padding: 6.5px 66px;
 }
-.cancel_btn {
+.cancel_button {
   background-color: transparent;
   border: none;
   color: #707070;
@@ -115,32 +115,32 @@ nav p.user a {
   font-weight: 600;
   margin-left: 12px;
 }
-.messages_area {
+#messages_area {
   padding-inline: 1.5em;
 }
-.messages_area .custom_wrapper {
+#messages_area .custom_wrapper {
   background-color: white;
   margin-inline: auto;
   max-width: 1281px;
   min-height: 75vh;
   padding: 76px 68px;
 }
-.messages_area header {
+#messages_area header {
   align-items: center;
   display: flex;
   justify-content: space-between;
   margin-bottom: 30px;
 }
-.messages_area header .message_count {
+#messages_area header #message_count {
   color: #707070;
   font-size: 16px;
   font-weight: 400;
 }
-.messages_area header .message_count strong {
+#messages_area header #message_count strong {
   color: #2c6bff;
   font-weight: 600;
 }
-.messages_area header .create_msg_btn {
+#messages_area header #create_message_button {
   background-color: #2c6bff;
   border-radius: 6px;
   border: none;
@@ -149,20 +149,20 @@ nav p.user a {
   padding: 6.5px 66px;
   padding: 6.5px 34px;
 }
-.messages_area .no_msg_prompt {
+#messages_area #no_message_prompt {
   color: #707070;
   margin-top: 133px;
   text-align: center;
 }
-.messages_area .no_msg_prompt.hide {
+#messages_area #no_message_prompt.hide {
   display: none;
 }
-.messages_area .no_msg_prompt img {
+#messages_area #no_message_prompt img {
   display: block;
   margin: 0 auto 20px;
 }
-.messages_area .message_block,
-.messages_area .comment_block {
+#messages_area .message_block,
+#messages_area .comment_block {
   background-color: white;
   border-radius: 6px;
   border: 1px solid #dce6ff;
@@ -171,39 +171,29 @@ nav p.user a {
   margin-bottom: 19px;
   padding: 24px 29px;
 }
-.messages_area .message_block.clone,
-.messages_area .comment_block.clone {
+#messages_area .message_block.clone,
+#messages_area .comment_block.clone {
   display: block;
 }
-.messages_area .message_block .edit_msg_form,
-.messages_area .comment_block .edit_msg_form,
-.messages_area .message_block .edit_comment_form,
-.messages_area .comment_block .edit_comment_form {
+#messages_area .message_block .edit_form,
+#messages_area .comment_block .edit_form {
   display: none;
   margin-bottom: 30px;
 }
-.messages_area .message_block .edit_msg_form.show,
-.messages_area .comment_block .edit_msg_form.show,
-.messages_area .message_block .edit_comment_form.show,
-.messages_area .comment_block .edit_comment_form.show {
+#messages_area .message_block .edit_form.show,
+#messages_area .comment_block .edit_form.show {
   display: block;
 }
-.messages_area .message_block .edit_msg_form textarea,
-.messages_area .comment_block .edit_msg_form textarea,
-.messages_area .message_block .edit_comment_form textarea,
-.messages_area .comment_block .edit_comment_form textarea {
+#messages_area .message_block .edit_form textarea,
+#messages_area .comment_block .edit_form textarea {
   margin-bottom: 13px;
 }
-.messages_area .message_block .edit_msg_form footer,
-.messages_area .comment_block .edit_msg_form footer,
-.messages_area .message_block .edit_comment_form footer,
-.messages_area .comment_block .edit_comment_form footer {
+#messages_area .message_block .edit_form footer,
+#messages_area .comment_block .edit_form footer {
   text-align: end;
 }
-.messages_area .message_block .edit_msg_form .edit_msg_btn,
-.messages_area .comment_block .edit_msg_form .edit_msg_btn,
-.messages_area .message_block .edit_comment_form .edit_msg_btn,
-.messages_area .comment_block .edit_comment_form .edit_msg_btn {
+#messages_area .message_block .edit_form .toggle_edit_button,
+#messages_area .comment_block .edit_form .toggle_edit_button {
   background-color: #2c6bff;
   border-radius: 6px;
   border: none;
@@ -213,26 +203,24 @@ nav p.user a {
   margin-left: 26px;
   padding-inline: 22px;
 }
-.messages_area .message_block .edit_msg_form .edit_msg_btn.disabled,
-.messages_area .comment_block .edit_msg_form .edit_msg_btn.disabled,
-.messages_area .message_block .edit_comment_form .edit_msg_btn.disabled,
-.messages_area .comment_block .edit_comment_form .edit_msg_btn.disabled {
+#messages_area .message_block .edit_form .toggle_edit_button.disabled,
+#messages_area .comment_block .edit_form .toggle_edit_button.disabled {
   opacity: .5;
 }
-.messages_area .comment_form {
+#messages_area .comment_form {
   border-radius: 6px;
   border: 1px solid #dce6ff;
   display: none;
   margin-top: 26px;
   padding: 30px;
 }
-.messages_area .comment_form.show {
+#messages_area .comment_form.show {
   display: block;
 }
-.messages_area .comment_form textarea {
+#messages_area .comment_form textarea {
   margin-bottom: 13px;
 }
-.messages_area .comment_form button {
+#messages_area .comment_form button {
   background-color: #2c6bff;
   border-radius: 6px;
   border: none;
@@ -243,26 +231,26 @@ nav p.user a {
   margin-left: auto;
   padding-inline: 31px;
 }
-.messages_area .comment_form button.disabled {
+#messages_area .comment_form button.disabled {
   opacity: .5;
 }
-.messages_area .comment_block {
+#messages_area .comment_block {
   margin-top: 18px;
   padding: 22px 28px;
 }
-.messages_area .display_body.hide {
+#messages_area .display_body.hide {
   display: none;
 }
-.messages_area .display_body .actions {
+#messages_area .display_body .actions {
   align-items: center;
   color: #707070;
   display: flex;
   margin-top: 18px;
 }
-.messages_area .display_body .actions .buttons {
+#messages_area .display_body .actions .buttons {
   display: flex;
 }
-.messages_area .display_body .actions button {
+#messages_area .display_body .actions button {
   background-color: transparent;
   border: none;
   font-size: 16px;
@@ -272,55 +260,55 @@ nav p.user a {
   display: flex;
   align-items: center;
 }
-.messages_area .display_body .actions button span {
+#messages_area .display_body .actions button span {
   display: inline-block;
   margin: 0 8px 2px 0;
   pointer-events: none;
 }
-.messages_area .display_body .actions button.comment_btn.has_comment {
+#messages_area .display_body .actions button.comment_button.has_comment {
   color: #2c6bff;
 }
-.messages_area .display_body .actions button.comment_btn.has_comment span {
+#messages_area .display_body .actions button.comment_button.has_comment span {
   background: url("../images/icons.png") -3px -36px;
 }
-.messages_area .display_body .actions button.comment_btn strong {
+#messages_area .display_body .actions button.comment_button strong {
   font-size: 16px;
   font-weight: 400;
   margin-right: 4px;
 }
-.messages_area .display_body .actions button.comment_btn span {
+#messages_area .display_body .actions button.comment_button span {
   background: url("../images/icons.png") no-repeat -3px -6px;
   height: 18px;
   width: 18px;
 }
-.messages_area .display_body .actions button.edit_btn {
+#messages_area .display_body .actions button.toggle_edit_button {
   color: #2c6bff;
 }
-.messages_area .display_body .actions button.edit_btn span {
+#messages_area .display_body .actions button.toggle_edit_button span {
   background: url("../images/icons.png") no-repeat -31px -4px;
   height: 22px;
   margin-bottom: 3px;
   width: 22px;
 }
-.messages_area .display_body .actions button.delete_btn span {
+#messages_area .display_body .actions button.delete_button span {
   background: url("../images/icons.png") no-repeat -64px -5px;
   height: 19px;
   width: 16px;
 }
-.messages_area .display_body .actions .message_info {
+#messages_area .display_body .actions .message_info {
   align-items: center;
   display: flex;
 }
-.messages_area .display_body .actions .message_info img {
+#messages_area .display_body .actions .message_info img {
   margin-bottom: 2px;
   margin-right: 7px;
 }
-.messages_area .display_body .actions .message_info .posted_by {
+#messages_area .display_body .actions .message_info .posted_by {
   display: inline-block;
   font-weight: 600;
   margin-right: 4px;
 }
-.messages_area .display_body .actions .message_info .post_time {
+#messages_area .display_body .actions .message_info .post_time {
   display: inline-block;
   margin-left: 4px;
 }
@@ -338,29 +326,29 @@ nav p.user a {
 .modal_backdrop.show {
   display: flex;
 }
-.create_msg_modal {
+#create_message_modal {
   background-color: white;
   border-radius: 6px;
   position: relative;
   padding: 43px 53px;
   width: 937px;
 }
-.create_msg_modal h2 {
+#create_message_modal h2 {
   color: #152c61;
   font-size: 26px;
   font-weight: 500;
   margin-bottom: 44px;
   text-align: center;
 }
-.create_msg_modal textarea {
+#create_message_modal textarea {
   height: 194px;
   margin-bottom: 23px;
   width: 100%;
 }
-.create_msg_modal .modal_btns_container {
+#create_message_modal footer {
   text-align: end;
 }
-.create_msg_modal .modal_btns_container .post_msg_btn {
+#create_message_modal footer #post_message_button {
   background-color: #2c6bff;
   border: none;
   color: white;
@@ -370,7 +358,7 @@ nav p.user a {
   margin-left: 20px;
   padding: 7px 40px;
 }
-.create_msg_modal .modal_btns_container .post_msg_btn.disabled {
+#create_message_modal footer #post_message_button.disabled {
   opacity: .5;
 }
 .confirm_delete_message_modal,
@@ -406,8 +394,8 @@ nav p.user a {
 .confirm_delete_comment_modal .modal_btns_container button {
   width: 100%;
 }
-.confirm_delete_message_modal .modal_btns_container .cancel_btn,
-.confirm_delete_comment_modal .modal_btns_container .cancel_btn {
+.confirm_delete_message_modal .modal_btns_container .cancel_button,
+.confirm_delete_comment_modal .modal_btns_container .cancel_button {
   background-color: transparent;
   border: none;
   font-size: 16px;
@@ -465,16 +453,16 @@ nav p.user a {
     margin-left: -0.3em;
     margin-bottom: .3em;
   }
-  .messages_area .message_block .edit_msg_form,
-  .messages_area .comment_block .edit_msg_form,
+  .messages_area .message_block .edit_message_form,
+  .messages_area .comment_block .edit_message_form,
   .messages_area .message_block .edit_comment_form,
   .messages_area .comment_block .edit_comment_form {
     margin-bottom: 0;
   }
-  .messages_area .message_block .edit_msg_form .edit_msg_btn,
-  .messages_area .comment_block .edit_msg_form .edit_msg_btn,
-  .messages_area .message_block .edit_comment_form .edit_msg_btn,
-  .messages_area .comment_block .edit_comment_form .edit_msg_btn {
+  .messages_area .message_block .edit_message_form .toggle_edit_button,
+  .messages_area .comment_block .edit_message_form .toggle_edit_button,
+  .messages_area .message_block .edit_comment_form .toggle_edit_button,
+  .messages_area .comment_block .edit_comment_form .toggle_edit_button {
     padding: 8px 13px;
   }
   .messages_area .comment_form {
@@ -486,14 +474,14 @@ nav p.user a {
   .messages_area .comment_block {
     padding: 1em;
   }
-  .create_msg_modal {
+  .create_message_modal {
     padding: 1.7em;
     width: 100%;
   }
-  .create_msg_modal h2 {
+  .create_message_modal h2 {
     margin-bottom: 1em;
   }
-  .create_msg_modal .modal_btns_container .post_msg_btn {
+  .create_message_modal .modal_btns_container .post_message_button {
     padding-inline: 13px;
   }
   .confirm_delete_message_modal,
@@ -543,7 +531,7 @@ nav p.user a {
   .confirm_delete_comment_modal .modal_btns_container {
     display: grid;
     grid-template-columns: unset;
-    grid-template-areas: "remove_btn" "cancel_btn";
+    grid-template-areas: "remove_btn" "cancel_button";
     place-items: center;
   }
   .confirm_delete_message_modal .modal_btns_container button,
@@ -551,9 +539,9 @@ nav p.user a {
     padding: 8px 13px;
     width: fit-content;
   }
-  .confirm_delete_message_modal .modal_btns_container button.cancel_btn,
-  .confirm_delete_comment_modal .modal_btns_container button.cancel_btn {
-    grid-area: cancel_btn;
+  .confirm_delete_message_modal .modal_btns_container button.cancel_button,
+  .confirm_delete_comment_modal .modal_btns_container button.cancel_button {
+    grid-area: cancel_button;
   }
   .confirm_delete_message_modal .modal_btns_container button.remove_btn,
   .confirm_delete_comment_modal .modal_btns_container button.remove_btn {

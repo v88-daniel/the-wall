@@ -21,7 +21,7 @@ nav{
         margin: 0 auto;
         max-width: 1281px;
         padding: 40px 0 41px;
-    }
+    } 
 
     h1{
         color: @dark_blue;
@@ -41,7 +41,7 @@ nav{
     }
 }
 
-.messages_area{
+#messages_area{
     padding-inline: 1.5em;
 
     .custom_wrapper{
@@ -58,7 +58,7 @@ nav{
         justify-content: space-between;
         margin-bottom: 30px;
 
-        .message_count{
+        #message_count{
             color: #707070;
             font-size: 16px;
             font-weight: 400;
@@ -69,13 +69,13 @@ nav{
             }
         }
 
-        .create_msg_btn{
-            .submit_btn();
+        #create_message_button{
+            .submit_button();
             padding: 6.5px 34px;
         }
     }
 
-    .no_msg_prompt{
+    #no_message_prompt{
         color: #707070;
         margin-top: 133px;
         text-align: center;
@@ -104,8 +104,7 @@ nav{
             display: block;
         }
 
-        .edit_msg_form, 
-        .edit_comment_form{
+        .edit_form{
             display: none;
             margin-bottom: 30px;
 
@@ -121,13 +120,13 @@ nav{
                 text-align: end
             }
 
-            .edit_msg_btn{
+            .toggle_edit_button{
 
                 &.disabled{
                     opacity: .5;
                 }
 
-                .submit_btn();
+                .submit_button();
                 margin-left: 26px;
                 padding-inline: 22px;
             }
@@ -155,7 +154,7 @@ nav{
                 opacity: .5;
             }
 
-            .submit_btn();
+            .submit_button();
             display: block;
             margin-left: auto;
             padding-inline: 31px;
@@ -185,7 +184,7 @@ nav{
 
 
             button{
-                .cancel_btn();
+                .cancel_button();
                 color: #707070;
                 margin-right: 27px;
                 display: flex;
@@ -197,7 +196,7 @@ nav{
                     pointer-events: none;
                 }
     
-                &.comment_btn{
+                &.comment_button{
 
                     &.has_comment{
                         color: @bright_blue;
@@ -220,7 +219,7 @@ nav{
                     }
                 }
     
-                &.edit_btn{
+                &.toggle_edit_button{
                     color: @bright_blue;
 
                     span{
@@ -231,7 +230,7 @@ nav{
                     }
                 }
     
-                &.delete_btn{
+                &.delete_button{
                     span{
                         background: url("../images/icons.png") no-repeat -64px -5px;
                         height: 19px;
@@ -281,7 +280,7 @@ nav{
 
 }
  
-.create_msg_modal{
+#create_message_modal{
     .modal();
     padding: 43px 53px;
     width: 937px;
@@ -300,16 +299,16 @@ nav{
         width: 100%;
     }
 
-    .modal_btns_container{
+    footer{
         text-align: end;
         
-        .post_msg_btn{
+        #post_message_button{
 
             &.disabled{
                 opacity: .5;
             }
 
-            .submit_btn();
+            .submit_button();
             border-radius: 6px;
             margin-left: 20px;
             padding: 7px 40px;
@@ -348,14 +347,14 @@ nav{
             width: 100%;
         }
 
-        .cancel_btn{
-            .cancel_btn();
+        .cancel_button{
+            .cancel_button();
             color: #707070;
             padding-right: 21px
         }
         
         .remove_btn{
-            .submit_btn();
+            .submit_button();
             border-radius: 6px;
             font-size: 18px;
             font-weight: 500;
@@ -411,11 +410,11 @@ nav{
                 }
             }
 
-            .edit_msg_form,
+            .edit_message_form,
             .edit_comment_form{
                 margin-bottom: 0;
 
-                .edit_msg_btn{
+                .toggle_edit_button{
                     padding: 8px 13px;
                 }
             }
@@ -434,7 +433,7 @@ nav{
 
     }
 
-    .create_msg_modal{
+    .create_message_modal{
         padding: 1.7em;
         width: 100%;
 
@@ -442,7 +441,7 @@ nav{
             margin-bottom: 1em;
         }
 
-        .modal_btns_container .post_msg_btn{
+        .modal_btns_container .post_message_button{
             padding-inline: 13px;
         }
     }
@@ -506,15 +505,15 @@ nav{
             grid-template-columns: unset;
             grid-template-areas: 
                 "remove_btn"
-                "cancel_btn";
+                "cancel_button";
             place-items: center;
 
             button{
                 padding: 8px 13px;
                 width: fit-content;
 
-                &.cancel_btn{
-                    grid-area: cancel_btn;
+                &.cancel_button{
+                    grid-area: cancel_button;
                 }
 
                 &.remove_btn{

@@ -13,7 +13,7 @@
     <nav>
         <div class="custom_wrapper">
             <h1>The Wall Assignment</h1>
-            <p id="user">Welcome, Daniel Renzal! <a href="index.html" class="logout">Logout</a></p>
+            <p id="user">Welcome, Daniel Renzal! <a href="index.html">Logout</a></p>
         </div>
     </nav>
     <div id="messages_area">
@@ -93,13 +93,13 @@
 
     <!-- modal to create a message -->
     <div class="modal_backdrop">
-        <form class="create_msg_modal">
-            <button type="button" class="close_modal_btn close_modal" data-close="modal_backdrop"></button>
+        <form id="create_message_modal">
+            <button type="button" class="close_modal_button close_modal"></button>
             <h2>Create a Message</h2>
             <textarea placeholder="Type your message here."></textarea>
-            <footer class="modal_btns_container">
-                <button type="button" class="cancel_btn close_modal" data-close="modal_backdrop">Cancel</button>
-                <button type="submit" class="post_msg_btn disabled">Post message</button>
+            <footer>
+                <button type="button" class="cancel_button close_modal">Cancel</button>
+                <button type="submit" id="post_message_button" class="disabled">Post message</button>
             </footer>
         </form>
     </div>
@@ -107,25 +107,25 @@
     <!-- modal to delete message -->
     <div class="modal_backdrop">
         <form class="confirm_delete_message_modal">
-            <button type="button" class="close_modal_btn" data-close="modal_backdrop"></button>
+            <button type="button" class="close_modal_button"></button>
             <h2>Confirm Delete Message</h2>
             <p>Are you sure you want to remove this message? This action cannot be undone.</p>
-            <footer class="modal_btns_container">
-                <button type="button" class="cancel_btn" data-close="modal_backdrop">Cancel</button>
-                <button type="submit" class="remove_btn">Yes, Remove it.</button>
+            <footer>
+                <button type="button" class="cancel_button">Cancel</button>
+                <button type="submit" class="remove_button">Yes, Remove it.</button>
             </footer>
         </form>
     </div>
 
     <!-- modal to delete comment -->
     <div class="modal_backdrop">
-        <form class="confirm_delete_comment_modal">
-            <button type="button" class="close_modal_btn" data-close="modal_backdrop"></button>
+        <form id="confirm_delete_comment_modal">
+            <button type="button" class="close_modal_button"></button>
             <h2>Confirm Delete Comment</h2>
             <p>Are you sure you want to remove this comment? This action cannot be undone.</p>
-            <footer class="modal_btns_container">
-                <button type="button" class="cancel_btn" data-close="modal_backdrop">Cancel</button>
-                <button type="submit" class="remove_btn">Yes, Remove it.</button>
+            <footer class="modal_buttons_container">
+                <button type="button" class="cancel_button">Cancel</button>
+                <button type="submit" class="remove_button">Yes, Remove it.</button>
             </footer>
         </form>
     </div>
