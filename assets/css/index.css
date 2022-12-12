@@ -60,7 +60,7 @@ button {
   right: 19px;
   top: 18px;
 }
-/* mixin */
+/* mixins */
 .submit_button {
   background-color: #2c6bff;
   border-radius: 6px;

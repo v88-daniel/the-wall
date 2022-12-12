@@ -60,7 +60,7 @@ button {
   right: 19px;
   top: 18px;
 }
-/* mixin */
+/* mixins */
 .submit_button {
   background-color: #2c6bff;
   border-radius: 6px;
@@ -106,11 +106,11 @@ nav h1 {
   font-size: 26px;
   font-weight: 500;
 }
-nav p.user {
+nav p#user {
   color: #152c61;
   font-size: 16px;
 }
-nav p.user a {
+nav p#user a {
   color: #2c6bff;
   font-weight: 600;
   margin-left: 12px;
@@ -178,7 +178,7 @@ nav p.user a {
 #messages_area .message_block .edit_form,
 #messages_area .comment_block .edit_form {
   display: none;
-  margin-bottom: 30px;
+  text-align: end;
 }
 #messages_area .message_block .edit_form.show,
 #messages_area .comment_block .edit_form.show {
@@ -339,6 +339,7 @@ nav p.user a {
   border-radius: 6px;
   position: relative;
   padding: 43px 53px;
+  text-align: end;
   width: 937px;
 }
 #create_message_modal h2 {
@@ -353,10 +354,7 @@ nav p.user a {
   margin-bottom: 23px;
   width: 100%;
 }
-#create_message_modal footer {
-  text-align: end;
-}
-#create_message_modal footer #post_message_button {
+#create_message_modal #post_message_button {
   background-color: #2c6bff;
   border: none;
   color: white;
@@ -366,44 +364,44 @@ nav p.user a {
   margin-left: 20px;
   padding: 7px 40px;
 }
-#create_message_modal footer #post_message_button.disabled {
+#create_message_modal #post_message_button.disabled {
   opacity: .5;
 }
-.delete_message_modal,
-.confirm_delete_comment_modal {
+#delete_message_modal,
+#delete_comment_modal {
   background-color: white;
   border-radius: 6px;
   position: relative;
   padding: 46px 74px 60px;
   width: 540px;
 }
-.delete_message_modal h2,
-.confirm_delete_comment_modal h2 {
+#delete_message_modal h2,
+#delete_comment_modal h2 {
   color: #152c61;
   font-size: 26px;
   font-weight: 500;
   margin-bottom: 33px;
   text-align: center;
 }
-.delete_message_modal p,
-.confirm_delete_comment_modal p {
+#delete_message_modal p,
+#delete_comment_modal p {
   color: #152c61;
   font-size: 16px;
   font-weight: 400;
   margin-bottom: 33px;
   text-align: center;
 }
-.delete_message_modal footer,
-.confirm_delete_comment_modal footer {
+#delete_message_modal footer,
+#delete_comment_modal footer {
   align-items: center;
   display: flex;
 }
-.delete_message_modal footer button,
-.confirm_delete_comment_modal footer button {
+#delete_message_modal footer button,
+#delete_comment_modal footer button {
   width: 100%;
 }
-.delete_message_modal footer .cancel_button,
-.confirm_delete_comment_modal footer .cancel_button {
+#delete_message_modal footer .cancel_button,
+#delete_comment_modal footer .cancel_button {
   background-color: transparent;
   border: none;
   font-size: 16px;
@@ -411,8 +409,8 @@ nav p.user a {
   color: #707070;
   padding-right: 21px;
 }
-.delete_message_modal footer .remove_button,
-.confirm_delete_comment_modal footer .remove_button {
+#delete_message_modal footer .remove_button,
+#delete_comment_modal footer .remove_button {
   background-color: #2c6bff;
   border: none;
   color: white;
@@ -430,84 +428,78 @@ nav p.user a {
   nav .custom_wrapper {
     padding: 0;
   }
-  nav p.user {
+  nav p#user {
     display: flex;
     flex-direction: column;
     align-items: end;
   }
-  .messages_area .custom_wrapper {
+  #messages_area .custom_wrapper {
     padding: 1.5em 1.8em;
   }
-  .messages_area header .create_msg_btn {
+  #messages_area header #create_message_button {
     padding-inline: 13px;
   }
-  .messages_area .message_block,
-  .messages_area .comment_block {
+  #messages_area .message_block,
+  #messages_area .comment_block {
     padding: 1em 1.2em;
   }
-  .messages_area .message_block .actions,
-  .messages_area .comment_block .actions {
+  #messages_area .message_block .actions,
+  #messages_area .comment_block .actions {
     display: grid;
     grid-template-areas: "post_info" "buttons";
     margin-top: .7em;
   }
-  .messages_area .message_block .actions .buttons,
-  .messages_area .comment_block .actions .buttons {
+  #messages_area .message_block .actions .buttons,
+  #messages_area .comment_block .actions .buttons {
     grid-area: buttons;
   }
-  .messages_area .message_block .actions .post_info,
-  .messages_area .comment_block .actions .post_info {
+  #messages_area .message_block .actions .post_info,
+  #messages_area .comment_block .actions .post_info {
     grid-area: post_info;
     margin-left: -0.3em;
     margin-bottom: .3em;
   }
-  .messages_area .message_block .edit_message_form,
-  .messages_area .comment_block .edit_message_form,
-  .messages_area .message_block .edit_comment_form,
-  .messages_area .comment_block .edit_comment_form {
-    margin-bottom: 0;
-  }
-  .messages_area .message_block .edit_message_form .toggle_edit_button,
-  .messages_area .comment_block .edit_message_form .toggle_edit_button,
-  .messages_area .message_block .edit_comment_form .toggle_edit_button,
-  .messages_area .comment_block .edit_comment_form .toggle_edit_button {
+  #messages_area .message_block .edit_message_form .toggle_edit_button,
+  #messages_area .comment_block .edit_message_form .toggle_edit_button,
+  #messages_area .message_block .edit_comment_form .toggle_edit_button,
+  #messages_area .comment_block .edit_comment_form .toggle_edit_button {
     padding: 8px 13px;
   }
-  .messages_area .comment_form {
+  #messages_area .comment_form {
     padding: 1em 1.2em;
   }
-  .messages_area .comment_form button {
+  #messages_area .comment_form button {
     padding-inline: 13px;
   }
-  .messages_area .comment_block {
+  #messages_area .comment_block {
     padding: 1em;
   }
-  .create_message_modal {
+  #create_message_modal {
     padding: 1.7em;
     width: 100%;
   }
-  .create_message_modal h2 {
+  #create_message_modal h2 {
     margin-bottom: 1em;
   }
-  .create_message_modal .modal_btns_container .post_message_button {
+  #create_message_modal #post_message_button {
     padding-inline: 13px;
   }
-  .delete_message_modal,
-  .confirm_delete_comment_modal {
+  #delete_message_modal,
+  #delete_comment_modal {
     padding: 1.7em;
   }
-  .delete_message_modal h2,
-  .confirm_delete_comment_modal h2 {
+  #delete_message_modal h2,
+  #delete_comment_modal h2 {
     margin-bottom: .5em;
   }
-  .delete_message_modal .modal_btns_container,
-  .confirm_delete_comment_modal .modal_btns_container {
+  #delete_message_modal footer,
+  #delete_comment_modal footer {
     display: grid;
     grid-template-columns: 1fr 1fr;
     place-items: center;
   }
-  .delete_message_modal .modal_btns_container button,
-  .confirm_delete_comment_modal .modal_btns_container button {
+  #delete_message_modal footer button,
+  #delete_comment_modal footer button {
     padding: 8px 13px;
     width: fit-content;
   }
@@ -520,39 +512,39 @@ nav p.user a {
     align-items: start;
     flex-direction: column;
   }
-  nav p.user {
+  nav p#user {
     align-items: end;
     display: flex;
     flex-direction: column;
   }
-  nav p.user a {
+  nav p#user a {
     position: absolute;
     right: 24px;
     top: 25px;
   }
-  .messages_area header {
+  #messages_area header {
     align-items: start;
     flex-direction: column;
     gap: 1em;
   }
-  .delete_message_modal .modal_btns_container,
-  .confirm_delete_comment_modal .modal_btns_container {
+  #delete_message_modal footer,
+  #delete_comment_modal footer {
     display: grid;
     grid-template-columns: unset;
     grid-template-areas: "remove_btn" "cancel_button";
     place-items: center;
   }
-  .delete_message_modal .modal_btns_container button,
-  .confirm_delete_comment_modal .modal_btns_container button {
+  #delete_message_modal footer button,
+  #delete_comment_modal footer button {
     padding: 8px 13px;
     width: fit-content;
   }
-  .delete_message_modal .modal_btns_container button.cancel_button,
-  .confirm_delete_comment_modal .modal_btns_container button.cancel_button {
+  #delete_message_modal footer button.cancel_button,
+  #delete_comment_modal footer button.cancel_button {
     grid-area: cancel_button;
   }
-  .delete_message_modal .modal_btns_container button.remove_btn,
-  .confirm_delete_comment_modal .modal_btns_container button.remove_btn {
+  #delete_message_modal footer button.remove_button,
+  #delete_comment_modal footer button.remove_button {
     grid-area: remove_btn;
   }
 }

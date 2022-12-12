@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Dashboard of the wall assignment">
     <meta name="author" content="Daniel Renzal">
+    <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/wall.css">
     <title>The Wall | Dashboard</title>
 </head>
@@ -25,8 +26,7 @@
     
             <!-- will prompt if there's no message -->
             <div id="no_message_prompt">
-                <img src="../assets/images/empty_msg_icon.png" alt="Empty message icon">
-                No Posted Message Yet.
+                <img src="../assets/images/empty_msg_icon.png" alt="Empty message icon">No Posted Message Yet.
             </div>
     
             <ul id="messages_container">
@@ -39,7 +39,7 @@
                             <div class="buttons">
                                 <button type="button" class="comment_button"><span></span><strong class="comment_count">0</strong>Comment</button>
                                 <button type="button" class="toggle_edit_button" data-edit=".message_block"><span></span>Edit</button>
-                                <button type="button" class="delete_button" data-to-delete=".message_block" data-modal=".delete_message_modal"><span></span>Delete</button>
+                                <button type="button" class="delete_button" data-to-delete=".message_block" data-modal="#delete_message_modal"><span></span>Delete</button>
                             </div>
                             <div class="post_info">
                                 <img src="../assets/images/user_icon.png" alt="User icon">
@@ -51,10 +51,8 @@
                     <!-- for displaying the edit message form -->
                     <form class="edit_form" data-to-edit=".message_block">
                         <textarea name="edit_message_input"></textarea>
-                        <footer>
-                            <button type="button" class="cancel_button" data-cancel=".message_block">Cancel</button>
-                            <button type="submit" class="edit_button">Update Message</button>
-                        </footer>
+                        <button type="button" class="cancel_button" data-cancel=".message_block">Cancel</button>
+                        <button type="submit" class="edit_button">Update Message</button>
                     </form>
                     <form class="comment_form">
                         <textarea name="comment_input"></textarea>
@@ -70,7 +68,7 @@
                     <footer class="actions">
                         <div class="buttons">
                             <button type="button" class="toggle_edit_button" data-edit=".comment_block"><span></span>Edit</button>
-                            <button type="button" class="delete_button" data-delete=".comment_block" data-modal=".confirm_delete_comment_modal"><span></span>Delete</button>
+                            <button type="button" class="delete_button" data-to-delete=".comment_block" data-modal="#delete_comment_modal"><span></span>Delete</button>
                         </div>
                         <div class="post_info">
                             <img src="../assets/images/user_icon.png" alt="User icon">
@@ -80,12 +78,10 @@
                     </footer>
                 </div>
                 <!-- for displaying the edit comment form -->
-                <form class="edit_form">
+                <form class="edit_form" data-to-edit=".comment_block">
                     <textarea name="edit_comment_input"></textarea>
-                    <footer>
-                        <button type="button" class="cancel_button" data-cancel="comment_block">Cancel</button>
-                        <button type="submit" class="edit_button" data-submit-edit=".comment_block">Update Comment</button>
-                    </footer>
+                    <button type="button" class="cancel_button" data-cancel=".comment_block">Cancel</button>
+                    <button type="submit" class="edit_button">Update Comment</button>
                 </form>
             </li>
         </div>
@@ -97,16 +93,14 @@
             <button type="button" class="close_modal_button close_modal"></button>
             <h2>Create a Message</h2>
             <textarea placeholder="Type your message here."></textarea>
-            <footer>
-                <button type="button" class="cancel_button close_modal">Cancel</button>
-                <button type="submit" id="post_message_button" class="disabled">Post message</button>
-            </footer>
+            <button type="button" class="cancel_button close_modal">Cancel</button>
+            <button type="submit" id="post_message_button" class="disabled">Post Message</button>
         </form>
     </div>
 
     <!-- modal to delete message -->
     <div class="modal_backdrop">
-        <form class="delete_message_modal">
+        <form id="delete_message_modal" class="confirmation_modal">
             <button type="button" class="close_modal_button close_modal"></button>
             <h2>Confirm Delete Message</h2>
             <p>Are you sure you want to remove this message? This action cannot be undone.</p>
@@ -119,11 +113,11 @@
 
     <!-- modal to delete comment -->
     <div class="modal_backdrop">
-        <form id="confirm_delete_comment_modal">
+        <form id="delete_comment_modal" class="confirmation_modal">
             <button type="button" class="close_modal_button close_modal"></button>
             <h2>Confirm Delete Comment</h2>
             <p>Are you sure you want to remove this comment? This action cannot be undone.</p>
-            <footer class="modal_buttons_container">
+            <footer>
                 <button type="button" class="cancel_button close_modal">Cancel</button>
                 <button type="submit" class="remove_button">Yes, Remove it.</button>
             </footer>
