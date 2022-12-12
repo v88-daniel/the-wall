@@ -22,7 +22,7 @@ function login(event){
         emptyInputValidator(email_input, email_error, "Email not found");
     }
     else{
-        removeErrorMsg(email_input, email_error);
+        removeErrorMessage(email_input, email_error);
     }
 
     /** validate password */
@@ -33,7 +33,7 @@ function login(event){
         emptyInputValidator(password_input, password_error, "Incorrect password");
     }
     else{
-        removeErrorMsg(password_input, password_error);
+        removeErrorMessage(password_input, password_error);
     }
 
     if(email_input.value === user.email && password_input.value === user.password){

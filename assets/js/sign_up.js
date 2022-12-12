@@ -1,10 +1,10 @@
 const email_input = getElement("#sign_up_form .email_input");
 const password_input = getElement("#sign_up_form .password_input");
-const confirm_password_input = getElement("#sign_up_form .cpassword_input");
+const confirm_password_input = getElement("#sign_up_form .confirm_password_input");
 
 const email_error = getElement("#sign_up_form .error_email");
 const password_error = getElement("#sign_up_form .error_password");
-const confirm_password_error = getElement("#sign_up_form .error_cpassword");
+const confirm_password_error = getElement("#sign_up_form .error_confirm_password");
 
 getElement("#sign_up_form").addEventListener("submit", signUp);
 
@@ -17,7 +17,7 @@ function signUp(event){
         emptyInputValidator(email_input, email_error, "Please enter your email");
     }
     else{
-        removeErrorMsg(email_input, email_error);
+        removeErrorMessage(email_input, email_error);
     }
 
     /** validate password */
@@ -25,7 +25,7 @@ function signUp(event){
         emptyInputValidator(password_input, password_error, "Please enter your password");
     }
     else{
-        removeErrorMsg(password_input, password_error);
+        removeErrorMessage(password_input, password_error);
     }
 
     /** validate confirm password */
@@ -36,7 +36,7 @@ function signUp(event){
         emptyInputValidator(confirm_password_input, confirm_password_error, "Entered passwords doesn't match");
     }
     else{
-        removeErrorMsg(confirm_password_input, confirm_password_error);
+        removeErrorMessage(confirm_password_input, confirm_password_error);
     }
 
     if(email_input.value && password_input.value && confirm_password_input.value && (password_input.value === confirm_password_input.value)){

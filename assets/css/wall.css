@@ -101,7 +101,7 @@ nav .custom_wrapper {
   max-width: 1281px;
   padding: 40px 0 41px;
 }
-nav h1 {
+nav #logo {
   color: #152c61;
   font-size: 26px;
   font-weight: 500;
@@ -531,7 +531,7 @@ nav p#user a {
   #delete_comment_modal footer {
     display: grid;
     grid-template-columns: unset;
-    grid-template-areas: "remove_btn" "cancel_button";
+    grid-template-areas: "remove_button" "cancel_button";
     place-items: center;
   }
   #delete_message_modal footer button,
@@ -545,6 +545,6 @@ nav p#user a {
   }
   #delete_message_modal footer button.remove_button,
   #delete_comment_modal footer button.remove_button {
-    grid-area: remove_btn;
+    grid-area: remove_button;
   }
 }

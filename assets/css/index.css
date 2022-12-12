@@ -144,7 +144,7 @@ button {
 #sign_in_body .form_container form input.error_input {
   background-color: rgba(225, 85, 76, 0.08);
 }
-#sign_in_body .form_container form p.error_msg {
+#sign_in_body .form_container form p.error_message {
   color: #e1554c;
   font-size: 14px;
   font-weight: 300;
@@ -172,7 +172,7 @@ button {
   padding: 15px 45px;
   text-transform: uppercase;
 }
-#sign_in_body .form_container form button[type="submit"].sign_up_btn {
+#sign_in_body .form_container form button[type="submit"].sign_up_button {
   margin-top: 0;
 }
 #sign_in_body .form_container form p.switch_form {
