@@ -9,13 +9,13 @@ function getElements(selector){
 }
 
 /** function to validate empty inputs */
-function emptyInputValidator(element, error_element, error_msg){
-    error_element.textContent = error_msg;
+function emptyInputValidator(element, error_element, error_message){
+    error_element.textContent = error_message;
     element.classList.add("error_input");
 }
 
 /** function to remove error messages */
-function removeErrorMsg(element, error_element){
+function removeErrorMessage(element, error_element){
     error_element.textContent = "";
     element.classList.remove("error_input");
 }

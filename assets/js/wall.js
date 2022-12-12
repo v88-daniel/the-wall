@@ -56,7 +56,7 @@ function addNewMessage(event){
         const new_message = postMessage();
         const edit_form = new_message.querySelector(".edit_form");
 
-        /**ADD EVENT LISTENERS */
+        /** ADD EVENT LISTENERS */
         /** open edit form */
         new_message.querySelector(".toggle_edit_button").addEventListener("click", openEditForm);
 
