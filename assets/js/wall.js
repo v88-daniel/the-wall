@@ -5,9 +5,6 @@ const delete_comment_modal = getElement("#delete_comment_modal");
 const create_message_input = getElement("#create_message_modal textarea");
 const post_message_button = getElement("#post_message_button");
 
-/* temporary variable for message/comment that needs to be deleted.*/
-let text_to_delete = null;
-
 /** open create message modal */
 getElement("#create_message_button").addEventListener("click", openCreateMessageModal);
 
@@ -27,13 +24,23 @@ create_message_modal.addEventListener("submit", addNewMessage);
 delete_message_modal.addEventListener("submit", deleteMessage);
 delete_comment_modal.addEventListener("submit", deleteComment);
 
-/** function to open create message modal */
+/**
+ * DOCU: Opens the modal to create message <br>
+ * Triggered by the click event of the #create_message_button. <br>
+ * Last updated at: December 13, 2022
+ * @author Daniel
+ */
 function openCreateMessageModal(){
     create_message_modal.closest(".modal_backdrop").classList.toggle("show");
     body.classList.add("modal_open");
 }
 
-/** function to close create message modal */
+/**
+ * DOCU: Closes the modal to create message <br>
+ * Triggered by the click event of all the buttons with a .close_modal class of the #create_message_modal. <br>
+ * Last updated at: December 13, 2022
+ * @author Daniel
+ */
 function closeCreateMessageModal(){
     this.closest(".modal_backdrop").classList.remove("show");
     this.closest("#create_message_modal").querySelector("#post_message_button").classList.add("disabled")
@@ -41,13 +48,24 @@ function closeCreateMessageModal(){
     create_message_input.value = "";
 }
 
-/** function to close create message modal */
+/**
+ * DOCU: Closes the confirmation modal <br>
+ * Triggered by the click event of all the buttons with a .close_modal class of the .confirmation_modal. <br>
+ * Last updated at: December 13, 2022
+ * @author Daniel
+ */
 function closeConfirmationModal(){
     this.closest(".modal_backdrop").classList.remove("show");
+    this.closest("form").querySelector("input").value = "";
     body.classList.remove("modal_open");
 }
 
-/** function to post a message */
+/**
+ * DOCU: Runs postMessage function. Also adds event listeners to all action related to the newly created message <br>
+ * Triggered by the addNewMessage function. <br>
+ * Last updated at: December 13, 2022
+ * @author Daniel
+ */
 function addNewMessage(event){
     event.preventDefault();
 
@@ -77,7 +95,13 @@ function addNewMessage(event){
     }
 }
 
-/** function to post message */
+/**
+ * DOCU: Runs the whole process of posting a message. <br>
+ * Triggered by the addNewMessage function. <br>
+ * Last updated at: December 13, 2022
+ * @returns {node object} A message clone
+ * @author Daniel
+ */
 function postMessage(){
     const messages_container = getElement("#messages_container");
     const new_message = createMessage(create_message_input.value, ".message_block.original", messages_container);
@@ -86,11 +110,20 @@ function postMessage(){
 
     updateMessageCount();
     body.classList.remove("modal_open");
-
+    
     return new_message;
 }
 
-/** function to create a message */
+/**
+ * DOCU: Creates a clone of a message/comment node object. <br>
+ * Triggered by the postMesssage and submitComment functions. <br>
+ * Last updated at: December 13, 2022
+ * @param {string} message Required. Text content
+ * @param {string} message_block_class Required. Class to target the message to clone.
+ * @param {node object} submit_button Required. Button to enable/disable
+ * @returns {node object} A message clone
+ * @author Daniel
+ */
 function createMessage(message, message_block_class, messages_container){
     const message_block_clone = getElement(message_block_class).cloneNode(true);
     message_block_clone.classList.add("clone");
@@ -105,10 +138,18 @@ function createMessage(message, message_block_class, messages_container){
         textarea.addEventListener("keyup", () => validateTyping(textarea, post_button));
     });
 
+    /** ADD ID */
+    message_block_clone.setAttribute("data-id", generateId());
+
     return message_block_clone;
 }
 
-/** function to update message count */
+/**
+ * DOCU: Updates the current number of messages. <br>
+ * Triggered by postMessage and deleteMessage functions. <br>
+ * Last updated at: December 13, 2022
+ * @author Daniel
+ */
 function updateMessageCount(){
     const messages = document.querySelectorAll(".message_block.clone");
     const no_message_prompt = getElement("#no_message_prompt");
@@ -123,7 +164,14 @@ function updateMessageCount(){
     }
 }
 
-/** function to enable/disable form submission based on if the input is empty or not */
+/**
+ * DOCU: Enables/disables a button (style only) based on the length of a given textarea's input. <br>
+ * Triggered by the createMessage function and create_message_input's keyup event <br>
+ * Last updated at: December 13, 2022
+ * @param {node object} textarea Required. Textarea to validate
+ * @param {node object} submit_button Required. Button to enable/disable
+ * @author Daniel
+ */
 function validateTyping(textarea, submit_button){
     if(textarea.value.length < 1){
         submit_button.classList.add("disabled");
@@ -133,7 +181,12 @@ function validateTyping(textarea, submit_button){
     }
 }
 
-/** function to open edit form */
+/**
+ * DOCU: Opens an edit form. <br>
+ * Triggered by a toggle edit button's click event inside the addNewMessage and submitComment function <br>
+ * Last updated at: December 13, 2022
+ * @author Daniel
+ */
 function openEditForm(){
     const text_block = this.closest(this.getAttribute("data-edit"));
     const current_text = text_block.querySelector(".text").textContent;
@@ -142,13 +195,24 @@ function openEditForm(){
     text_block.querySelector(".display_body").classList.toggle("hide");
 }
 
-/** function to close edit form */
+/**
+ * DOCU: Closes an edit form. <br>
+ * Triggered by a cancel button's (edit form) click event inside the addNewMessage and submitComment function <br>
+ * Last updated at: December 13, 2022
+ * @author Daniel
+ */
 function closeEditForm(){
     this.closest("form").classList.toggle("show");
     this.closest(this.getAttribute("data-cancel")).querySelector(".display_body").classList.toggle("hide");
 }
 
-/** function to submit edits */
+/**
+ * DOCU: Modifies a message/comment. <br>
+ * Triggered by an edit form's submit event inside the addNewMessage and submitComment function <br>
+ * Last updated at: December 13, 2022
+ * @param {object} event. Required to call the preventDefault method to avoid reloading the browser.
+ * @author Daniel
+ */
 function submitEdit(event){
     event.preventDefault();
     const text_block = this.closest(this.getAttribute("data-to-edit"));
@@ -160,22 +224,38 @@ function submitEdit(event){
     }
 }
 
-/** function to open delete confirmation modal */
+/**
+ * DOCU: Displays a confimation modal when a delete button is clicked. <br>
+ * Triggered by a delete button's click event inside the addNewMessage and submitComment function <br>
+ * Last updated at: December 13, 2022
+ * @author Daniel
+ */
 function openDeleteConfirmationModal(){
     const modal = getElement(this.getAttribute("data-modal"));
-    text_to_delete = this.closest(this.getAttribute("data-to-delete"));
+    modal.querySelector("input").value = this.closest("li").getAttribute("data-id");
     modal.closest(".modal_backdrop").classList.add("show");
     body.classList.add("modal_open");
 }
 
-/** function to toggle comment form */
+/**
+ * DOCU: Displays/hides a comment form. <br>
+ * Triggered by a comment button's click event inside the addNewMessage function <br>
+ * Last updated at: December 13, 2022
+ * @author Daniel
+ */
 function toggleCommentForm(){
     const message_block = this.closest(".message_block");
     message_block.querySelector(".comment_form").classList.toggle("show");
     message_block.querySelector(".comments_container").classList.toggle("show");
 }
 
-/** function to submit comment */
+/**
+ * DOCU: Submits a comment then add event listeners to all actions related to it. <br>
+ * Triggered by a comment form's submit event inside the addNewMessage function <br>
+ * Last updated at: December 13, 2022
+ * @param {object} event. Required to call the preventDefault method to avoid reloading the browser.
+ * @author Daniel
+ */
 function submitComment(event){
     event.preventDefault();
     const message_block = this.closest(".message_block");
@@ -205,7 +285,13 @@ function submitComment(event){
     }
 }
 
-/** function to update comment count */
+/**
+ * DOCU: Updates the current number of comments in a given message. <br>
+ * Triggered by submitComment and deleteComment functions. <br>
+ * Last updated at: December 13, 2022
+ * @param {node object} message_block Required. The message where the comments came from.
+ * @author Daniel
+ */
 function updateCommentCount(message_block){
     const comment_count = message_block.querySelector(".comment_count");
     comment_count.textContent = message_block.querySelectorAll(".comment_block").length;
@@ -218,19 +304,51 @@ function updateCommentCount(message_block){
     }
 }
 
-/** function to delete message once confirmed */
+/**
+ * DOCU: Deletes a message once confirmed. <br>
+ * Triggered by the submit event of the delete_message_modal. <br>
+ * Last updated at: December 13, 2022
+ * @param {object} event. Required to call the preventDefault method to avoid reloading the browser.
+ * @author Daniel
+ */
 function deleteMessage(event){
     event.preventDefault();
+    const message_id = this.querySelector("input").value;
+    const messages_array = Array.from(getElements(".message_block.clone"))
+    messages_array.find(message => message.getAttribute("data-id") === message_id).remove();
+
     delete_message_modal.closest(".modal_backdrop").classList.toggle("show");
-    text_to_delete.remove();
+    body.classList.remove("modal_open");
     updateMessageCount()
 }
 
-/** function to delete comment once confirmed */
+/**
+ * DOCU: Deletes a comment once confirmed. <br>
+ * Triggered by the submit event of the delete_comment_modal. <br>
+ * Last updated at: December 13, 2022
+ * @param {object} event. Required to call the preventDefault method to avoid reloading the browser.
+ * @author Daniel
+ */
 function deleteComment(event){
     event.preventDefault();
+    const comment_id = this.querySelector("input").value;
+    const comments_array = Array.from(getElements(".comment_block.clone"))
+    const comment = comments_array.find(comment => comment.getAttribute("data-id") === comment_id);
+    const parent_message = comment.closest(".message_block")
+    comment.remove();
+
     delete_comment_modal.closest(".modal_backdrop").classList.toggle("show");
-    const parent_message_block = text_to_delete.closest(".message_block");
-    text_to_delete.remove();
-    updateCommentCount(parent_message_block);
+    body.classList.remove("modal_open");
+    updateCommentCount(parent_message);
+}
+
+/**
+ * DOCU: Generates a random id for messages and comments. <br>
+ * Triggered by createMessage function. <br>
+ * Last updated at: December 13, 2022
+ * @returns {number} randomly generated number
+ * @author Daniel
+ */
+function generateId(){
+    return Math.floor(Math.random() * new Date().getTime());
 }

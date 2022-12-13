@@ -11,6 +11,13 @@ const password_error = getElement("#login_form .error_password");
 
 getElement("#login_form").addEventListener("submit", login);
 
+/**
+ * DOCU: Processes the validation for login <br>
+ * Triggered by the submit event of the login_form. <br>
+ * Last updated at: December 13, 2022
+ * @param {object} event. Required to call the preventDefault to avoid reloading the browser.
+ * @author Daniel
+ */
 function login(event){
     event.preventDefault();
 
