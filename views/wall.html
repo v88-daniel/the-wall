@@ -101,6 +101,8 @@
     <!-- modal to delete message -->
     <div class="modal_backdrop">
         <form id="delete_message_modal" class="confirmation_modal">
+            <input type="hidden" name="message_to_delete">
+
             <button type="button" class="close_modal_button close_modal"></button>
             <h2>Confirm Delete Message</h2>
             <p>Are you sure you want to remove this message? This action cannot be undone.</p>
@@ -114,6 +116,8 @@
     <!-- modal to delete comment -->
     <div class="modal_backdrop">
         <form id="delete_comment_modal" class="confirmation_modal">
+            <input type="hidden" name="comment_to_delete">
+
             <button type="button" class="close_modal_button close_modal"></button>
             <h2>Confirm Delete Comment</h2>
             <p>Are you sure you want to remove this comment? This action cannot be undone.</p>

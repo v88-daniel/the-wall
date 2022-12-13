@@ -8,7 +8,13 @@ const confirm_password_error = getElement("#sign_up_form .error_confirm_password
 
 getElement("#sign_up_form").addEventListener("submit", signUp);
 
-
+/**
+ * DOCU: Processes the validation for signup <br>
+ * Triggered by the submit event of the sign_up_form. <br>
+ * Last updated at: December 13, 2022
+ * @param {object} event. Required to call the preventDefault to avoid reloading the browser.
+ * @author Daniel
+ */
 function signUp(event){
     event.preventDefault();
 

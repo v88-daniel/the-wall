@@ -182,12 +182,12 @@ button {
 #sign_in_body .form_container form p.switch_form a {
   color: #2c6bff;
 }
-#sign_in_body .img_container {
+#sign_in_body .image_container {
   background-color: #86a7f2;
   position: relative;
   width: 40%;
 }
-#sign_in_body .img_container img {
+#sign_in_body .image_container img {
   left: -67px;
   position: absolute;
   top: 50%;
@@ -197,7 +197,7 @@ button {
   #sign_in_body .form_container {
     width: 100%;
   }
-  #sign_in_body .img_container {
+  #sign_in_body .image_container {
     display: none;
   }
 }
