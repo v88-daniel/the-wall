@@ -313,7 +313,7 @@ function updateCommentCount(message_block){
  */
 function deleteMessage(event){
     event.preventDefault();
-    const message_id = this.querySelector("input").value;
+    const message_id = this.querySelector("input[name='message_id']").value;
     const messages_array = Array.from(getElements(".message_block.clone"))
     messages_array.find(message => message.getAttribute("data-id") === message_id).remove();
 
@@ -331,7 +331,7 @@ function deleteMessage(event){
  */
 function deleteComment(event){
     event.preventDefault();
-    const comment_id = this.querySelector("input").value;
+    const comment_id = this.querySelector("input[name='comment_id']").value;
     const comments_array = Array.from(getElements(".comment_block.clone"))
     const comment = comments_array.find(comment => comment.getAttribute("data-id") === comment_id);
     const parent_message = comment.closest(".message_block")
